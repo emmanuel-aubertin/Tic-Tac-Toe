@@ -11,6 +11,7 @@ module Хрестики_нулики {
 	requires javafx.graphics;
 	requires java.xml;
 	requires java.desktop;
+	requires javafx.base;
 
 	
 	opens application to javafx.graphics, javafx.fxml;

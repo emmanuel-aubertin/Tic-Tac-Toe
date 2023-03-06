@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="371.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfigVueController">
+   <children>
+      <Text layoutX="176.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Хрестики-нулики AI">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Button layoutX="536.0" layoutY="324.0" mnemonicParsing="false" text="Apply" onAction="#handleSaveBtn"/>
+      <VBox fx:id="VBoxView" layoutX="27.0" layoutY="89.0" prefHeight="235.0" prefWidth="547.0" />
+   </children>
+</Pane>
