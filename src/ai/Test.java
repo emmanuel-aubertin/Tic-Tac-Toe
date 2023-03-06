@@ -14,38 +14,41 @@ public class Test {
 
 	public static void test(String[] args) {
 		try {
-			//
-			// LOAD DATA ...
-			//
-			HashMap<Integer, Coup> coups = loadGames("./resources/dataset/Tic_tac_initial_results.csv");
-			saveGames(coups, "./resources/train_dev_test/", 0.7);
-			//
-			// LOAD CONFIG ...
-			//
-			ConfigFileLoader cfl = new ConfigFileLoader();
-			cfl.loadConfigFile("./resources/config.txt");
-			// Choose the write configuration
-			Config config = cfl.get("F");
-			System.out.println("Test.main() : "+config);
-			//
-			//TRAIN THE MODEL ...
-			//
-			// Number of learning iterration
-			double epochs = 100000 ; 
-			HashMap<Integer, Coup> mapTrain = loadCoupsFromFile("./resources/train_dev_test/train.txt");
-			MultiLayerPerceptron net = learn(9, mapTrain, config.hiddenLayerSize, config.learningRate, config.numberOfhiddenLayers, true, epochs);
+//			//
+//			// LOAD DATA ...
+//			//
+//			HashMap<Integer, Coup> coups = loadGames("./resources/dataset/Tic_tac_initial_results.csv");
+//			saveGames(coups, "./resources/train_dev_test/", 0.7);
+			
+//			//
+//			// LOAD CONFIG ...
+//			//
+//			ConfigFileLoader cfl = new ConfigFileLoader();
+//			cfl.loadConfigFile("./resources/config.txt");
+//			// Choose the write configuration
+//			Config config = cfl.get("F");
+//			System.out.println("Test.main() : "+config);
+			
+//			//
+//			//TRAIN THE MODEL ...
+//			//
+//			// Number of learning iterration
+//			double epochs = 100000 ; 
+//			HashMap<Integer, Coup> mapTrain = loadCoupsFromFile("./resources/train_dev_test/train.txt");
+//			MultiLayerPerceptron net = learn(9, mapTrain, config.hiddenLayerSize, config.learningRate, config.numberOfhiddenLayers, true, epochs);
+			
 			//
 			//PLAY ...
 			//
-			HashMap<Integer, Coup> mapDev = loadCoupsFromFile("./resources/train_dev_test/dev.txt");
-			Coup c = mapTrain.get((int)(Math.round(Math.random() * mapDev.size())));
-			double[] res = play(net, c);
-			System.out.println("Dev predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
-			//
-			HashMap<Integer, Coup> mapTest = loadCoupsFromFile("./resources/train_dev_test/test.txt");
-			c = mapTrain.get((int)(Math.round(Math.random() * mapTest.size())));
-			res = play(net, c);
-			System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
+//			HashMap<Integer, Coup> mapDev = loadCoupsFromFile("./resources/train_dev_test/dev.txt");
+//			Coup c = mapTrain.get((int)(Math.round(Math.random() * mapDev.size())));
+//			double[] res = play(net, c);
+//			System.out.println("Dev predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
+//			//
+//			HashMap<Integer, Coup> mapTest = loadCoupsFromFile("./resources/train_dev_test/test.txt");
+//			c = mapTrain.get((int)(Math.round(Math.random() * mapTest.size())));
+//			res = play(net, c);
+//			System.out.println("Test predicted: "+Arrays.toString(res) + " -> true: "+ Arrays.toString(c.out));
 			
 			
 		} 
@@ -57,6 +60,30 @@ public class Test {
 	}
 
 	///////////
+	
+	public static void SettingsLoadData() {
+		//
+		// LOAD DATA ...
+		//
+		HashMap<Integer, Coup> coups = loadGames("./resources/dataset/Tic_tac_initial_results.csv");
+		saveGames(coups, "./resources/train_dev_test/", 0.7);
+		//
+		// LOAD CONFIG ...
+		//
+		ConfigFileLoader cfl = new ConfigFileLoader();
+		cfl.loadConfigFile("./resources/config.txt");
+		// Choose the write configuration
+		Config config = cfl.get("F");
+		System.out.println("Test.main() : " + config);
+		//
+		//TRAIN THE MODEL ...
+		//
+		// Number of learning iterration
+		double epochs = 100000 ; 
+		HashMap<Integer, Coup> mapTrain = loadCoupsFromFile("./resources/train_dev_test/train.txt");
+		MultiLayerPerceptron net = learn(9, mapTrain, config.hiddenLayerSize, config.learningRate, config.numberOfhiddenLayers, true, epochs);
+		
+	}
 
 	public static MultiLayerPerceptron learn(int size, HashMap<Integer, Coup> mapTrain, int h, double lr, int l, boolean verbose, double epochs){
 		try {
@@ -102,7 +129,7 @@ public class Test {
 			if ( verbose ) 
 				System.out.println("Learning completed!");
 
-			return net ;
+			return net;
 		} 
 		catch (Exception e) {
 			System.out.println("Test.learn()");
