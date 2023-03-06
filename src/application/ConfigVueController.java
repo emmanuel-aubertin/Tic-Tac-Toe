@@ -78,7 +78,14 @@ public class ConfigVueController {
 		}
 	}
 	
-	
+	/**
+	 * Write new config in config.txt
+	 * WARNING THIS METHOD OVERWRITE THE FILE
+	 * 
+	 * @param newConf new configuration
+	 * 
+	 * @author Aubertin Emmanuel (aka aTHO_)
+	 */
 	private void writeConfig(String newConf)
 	{
 		try {
@@ -135,7 +142,11 @@ public class ConfigVueController {
 		writeConfig(newConf);
 	}
 
-	
+	/**
+	 * Handle add new line to config
+	 * 
+	 * @author Aubertin Emmanuel (aka aTHO_)
+	 */
 	public void handleAddBtn() {
 		HBox confLine = new HBox();
 		
@@ -156,6 +167,7 @@ public class ConfigVueController {
 		ereaseBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 	        public void handle(ActionEvent event) {
+				// Remove HBOX (current line) from the parent Vbox
 				VBoxView.getChildren().remove(((Node) event.getTarget()).getParent());
 	        }
 		});
