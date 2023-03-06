@@ -4,14 +4,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import ai.Config;
 import ai.ConfigFileLoader;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -46,46 +49,58 @@ public class ConfigVueController {
 
 			
 			// NAME OF THE LVL
-			confLine.getChildren().add(new Text(confFromFile.getConfFromInt(i).level));
+			confLine.getChildren().add(new TextField(confFromFile.getConfFromInt(i).level));
 			System.out.print(confFromFile.getConfFromInt(i).level + ":");
 			
 			// HIDDEN LAYER SIZE
-			TextField layerSize = new TextField();
-			layerSize.setText(String.valueOf(confFromFile.getConfFromInt(i).hiddenLayerSize));
-			layerSize.setId("layerSize" + i);
-			confLine.getChildren().add(layerSize);
+			confLine.getChildren().add( new TextField(String.valueOf(confFromFile.getConfFromInt(i).hiddenLayerSize)));
 			System.out.print(confFromFile.getConfFromInt(i).hiddenLayerSize + ":");
 			
 			// LEARNING RATE
-			TextField learningRate = new TextField();
-			learningRate.setText(String.valueOf(confFromFile.getConfFromInt(i).learningRate));
-			layerSize.setId("learningRate" + i);
-			confLine.getChildren().add(learningRate);
-			System.out.print(confFromFile.getConfFromInt(i).learningRate + ":");
+			confLine.getChildren().add( new TextField(String.valueOf(confFromFile.getConfFromInt(i).learningRate)));
+			//System.out.print(confFromFile.getConfFromInt(i).learningRate + ":");
 			
 			// NUMBER OF HIDDEN LAYER
-			TextField numberOfLayer = new TextField();
-			numberOfLayer.setText(String.valueOf(confFromFile.getConfFromInt(i).numberOfhiddenLayers));
-			layerSize.setId("numberOfLayer" + i);
-			confLine.getChildren().add(numberOfLayer);
+			confLine.getChildren().add( new TextField(String.valueOf(confFromFile.getConfFromInt(i).numberOfhiddenLayers)));
 			System.out.print(confFromFile.getConfFromInt(i).numberOfhiddenLayers + "\n");
 			
-			VBoxView.getChildren().add(confLine);
+			// REMOVE BTN
+			Button ereaseBtn =  new Button("X️");
+			ereaseBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+		        public void handle(ActionEvent event) {
+					VBoxView.getChildren().remove(((Node) event.getTarget()).getParent());
+		        }
+			});
+			confLine.getChildren().add(ereaseBtn);
 			
+			VBoxView.getChildren().add(confLine);
+		}
+	}
+	
+	
+	private void writeConfig(String newConf)
+	{
+		try {
+			BufferedWriter confFile = new BufferedWriter(new FileWriter("./resources/config.txt"));
+			confFile.write(newConf); // Here we write in the config file
+			confFile.close();
+			System.out.println("OK - Config saved");
+		} catch (IOException e) {
+			System.out.println("ERROR - FAIL TO WRITE ");
+			e.printStackTrace();
 		}
 	}
 	
 	/**
 	 * Handle save config click
-	 * @param event
 	 * 
 	 * @author Aubertin Emmanuel (aka aTHO_)
 	 */
-	public void handleSaveBtn(ActionEvent event )
+	public void handleSaveBtn()
 	{
 		// CONFIG FILE FORMAT
 		// ID:LayerSize:LearningRate:NumberOfLayer
-		
 		System.out.println("----------------------------");
 		System.out.println("-- Config to save");
 		System.out.println("----------------------------");
@@ -98,8 +113,8 @@ public class ConfigVueController {
 				HBox confLine = (HBox) currComp;
 				
 				// ID
-				System.out.print(confLine.getId() + ":");
-				newConf += confLine.getId()+ ":";
+				System.out.print(((TextField) (confLine.getChildren().get(0))).getText()+ ":");
+				newConf += ((TextField) (confLine.getChildren().get(0))).getText()+ ":";
 				
 				
 				// LayerSize
@@ -117,14 +132,35 @@ public class ConfigVueController {
 			}
 		}
 		System.out.println("-- Writting config.txt --");
-		try {
-			BufferedWriter confFile = new BufferedWriter(new FileWriter("./resources/config.txt"));
-			confFile.write(newConf);
-			confFile.close();
-			System.out.println("OK - Config saved");
-		} catch (IOException e) {
-			System.out.println("ERROR - FAIL TO WRITE ");
-			e.printStackTrace();
-		}
+		writeConfig(newConf);
+	}
+
+	
+	public void handleAddBtn() {
+		HBox confLine = new HBox();
+		
+		// NAME OF THE LVL
+		confLine.getChildren().add(new TextField("C"));
+		
+		// HIDDEN LAYER SIZE
+		confLine.getChildren().add(new TextField("256"));
+
+		// LEARNING RATE
+		confLine.getChildren().add(new TextField("0.1"));
+		
+		// NUMBER OF HIDDEN LAYER
+		confLine.getChildren().add(new TextField("2"));
+		
+		// REMOVE BTN
+		Button ereaseBtn =  new Button("X️");
+		ereaseBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+	        public void handle(ActionEvent event) {
+				VBoxView.getChildren().remove(((Node) event.getTarget()).getParent());
+	        }
+		});
+		confLine.getChildren().add(ereaseBtn);
+		
+		VBoxView.getChildren().add(confLine);
 	}
 }

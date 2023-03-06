@@ -12,7 +12,8 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Button layoutX="536.0" layoutY="324.0" mnemonicParsing="false" text="Apply" onAction="#handleSaveBtn"/>
+      <Button layoutX="536.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Apply" />
       <VBox fx:id="VBoxView" layoutX="27.0" layoutY="89.0" prefHeight="235.0" prefWidth="547.0" />
+      <Button layoutX="481.0" layoutY="324.0" mnemonicParsing="false" text="Add" onAction="#handleAddBtn"/>
    </children>
 </Pane>
