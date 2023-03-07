@@ -5,31 +5,11 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TrainingController">
    <children>
-      <Button fx:id="buttonLearn" layoutX="214.0" layoutY="243.0" mnemonicParsing="false" onAction="#onButtonLearnClicked" text="Strart trainning" AnchorPane.bottomAnchor="37.0" />
-      <ProgressBar fx:id="progressBarLearn" layoutX="44.0" layoutY="202.0" prefHeight="20.0" prefWidth="438.0" progress="0.0" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="202.0" />
-      <Text layoutX="62.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Percent :" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="84.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text layoutX="62.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pressicion :" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="122.630859375">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text layoutX="62.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Step :" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="160.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text id="PercentValue" layoutX="230.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text id="PressicionValue" layoutX="230.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text id="StepValue" layoutX="230.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Button fx:id="buttonLearn" layoutX="214.0" layoutY="206.0" mnemonicParsing="false" onAction="#onButtonLearnClicked" text="Strart trainning" AnchorPane.bottomAnchor="74.0" />
+      <ProgressBar fx:id="progressBarLearn" layoutX="44.0" layoutY="159.0" prefHeight="20.0" prefWidth="438.0" progress="0.0" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="159.0" />
       <Label fx:id="textLearn" layoutX="206.0" layoutY="39.0" text="Tic-Tac-Toe" AnchorPane.topAnchor="39.0">
          <font>
             <Font size="18.0" />
