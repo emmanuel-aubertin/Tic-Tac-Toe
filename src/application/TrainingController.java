@@ -22,6 +22,9 @@ public class TrainingController {
 	@FXML
 	private ProgressBar progressBarLearn;
 	
+
+	private int abs = 7;
+	
 	@FXML
 	private Label textLearn;
 	
@@ -74,7 +77,8 @@ public class TrainingController {
 			System.out.println("Load data ...");
 			System.out.println("---");
 		}
-	    
+
+		
 	    Task<Integer> task = new Task<Integer>() {
 			double error = 0.0 ;
 	         @Override protected Integer call() throws Exception {
@@ -111,4 +115,6 @@ public class TrainingController {
 	     new Thread(task).start();
 	    		 
 	}
+	
+	
 }
