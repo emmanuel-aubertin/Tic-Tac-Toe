@@ -35,9 +35,9 @@ public class ConfigVueController {
 	
 	// Init of the config window with the data of config.txt
 	@FXML public void initialize() {
-		System.out.println("----------------------------");
-		System.out.println("-- Current config");
-		System.out.println("----------------------------");
+		System.out.println("|----------------------------|");
+		System.out.println("|-- Current config           |");
+		System.out.println("|----------------------------|");
 		ConfigFileLoader confFromFile = new ConfigFileLoader();
 		confFromFile.loadConfigFile("./resources/config.txt");
 		
