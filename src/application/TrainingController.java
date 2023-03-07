@@ -89,9 +89,10 @@ public class TrainingController {
 					if ( i % 1000 == 0 && true) {
 						System.out.println("Error at step "+i+" is "+ (error/(double)i));
 						System.out.println("Percentage : " + (i/epochs*100));
-						updateProgress(i, epochs);
 						updateMessage("Progres: " + (int)(i/epochs*100) + "%");
 					}
+					
+					updateProgress(i, epochs);
 				}
 	        	 
 	 			if ( true ) {
@@ -100,7 +101,7 @@ public class TrainingController {
 	 			}
 	 			
 	 			return null;
-	 		} 
+	 		}  
 	     };
 		
 	     
