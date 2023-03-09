@@ -20,5 +20,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button layoutX="254.0" layoutY="108.0" mnemonicParsing="false" text="Play againts IA" />
    </children>
 </Pane>
