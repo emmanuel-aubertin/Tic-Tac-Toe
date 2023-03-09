@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,18 +9,34 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
-   <children>
-      <MenuBar prefHeight="28.0" prefWidth="612.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Settings">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleOpenConfiguration" text="Set Configuration" />
-                <MenuItem mnemonicParsing="false" onAction="#handleOpenModel" text="See Model" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <Button layoutX="254.0" layoutY="108.0" mnemonicParsing="false" text="Play againts IA" />
-   </children>
-</Pane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
+    <children>
+       <MenuBar prefHeight="28.0" prefWidth="612.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <menus>
+           <Menu mnemonicParsing="false" text="Settings">
+             <items>
+               <MenuItem mnemonicParsing="false" onAction="#handleOpenConfiguration" text="Set Configuration" />
+                 <MenuItem mnemonicParsing="false" onAction="#handleOpenModel" text="See Model" />
+             </items>
+           </Menu>
+         </menus>
+       </MenuBar>
+   	<VBox alignment="CENTER" layoutX="251.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity">
+   		<children>
+		             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchIA" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play againts IA" textAlignment="CENTER">
+		               <StackPane.margin>
+		                  <Insets bottom="35.0" />
+		               </StackPane.margin>
+		            </Button>
+		             <ComboBox fx:id="difficultySelector" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css">
+		               <StackPane.margin>
+		                  <Insets top="35.0" />
+		               </StackPane.margin>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+		            </ComboBox>
+            </children>
+      </VBox>
+    </children>
+ </AnchorPane>

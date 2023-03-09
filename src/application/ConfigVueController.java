@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import ai.Config;
 import ai.ConfigFileLoader;
@@ -16,6 +17,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -27,7 +29,6 @@ import javafx.scene.text.Text;
  * @version 0.1
  * @since 0.1
  */
-
 public class ConfigVueController {
 	
 	@FXML private VBox VBoxView;
@@ -41,6 +42,9 @@ public class ConfigVueController {
 		ConfigFileLoader confFromFile = new ConfigFileLoader();
 		confFromFile.loadConfigFile("./resources/config.txt");
 		
+		Pattern regexFloalt = Pattern.compile("[+-]?([0-9]*[.])?[0-9]+");
+		Pattern regexInt = Pattern.compile("[0-9]*");
+		
 		for(int i = 0; i < confFromFile.size(); i++)
 		{
 			
@@ -53,15 +57,36 @@ public class ConfigVueController {
 			System.out.print(confFromFile.getConfFromInt(i).level + ":");
 			
 			// HIDDEN LAYER SIZE
-			confLine.getChildren().add( new TextField(String.valueOf(confFromFile.getConfFromInt(i).hiddenLayerSize)));
+			TextField hiddenSize = new TextField(String.valueOf(confFromFile.getConfFromInt(i).hiddenLayerSize));
+			hiddenSize.setTextFormatter(new TextFormatter<>(newValue -> {
+			    if (regexInt.matcher(newValue.getControlNewText()).matches()) {
+			        return newValue;
+			    }
+			    return null;
+			}));
+			confLine.getChildren().add(hiddenSize);
 			System.out.print(confFromFile.getConfFromInt(i).hiddenLayerSize + ":");
 			
 			// LEARNING RATE
-			confLine.getChildren().add( new TextField(String.valueOf(confFromFile.getConfFromInt(i).learningRate)));
+			TextField learningRate = new TextField(String.valueOf(confFromFile.getConfFromInt(i).learningRate));
+			learningRate.setTextFormatter(new TextFormatter<>(newValue -> {
+			    if (regexFloalt.matcher(newValue.getControlNewText()).matches()) {
+			        return newValue;
+			    }
+			    return null;
+			}));
+			confLine.getChildren().add(learningRate);
 			//System.out.print(confFromFile.getConfFromInt(i).learningRate + ":");
 			
 			// NUMBER OF HIDDEN LAYER
-			confLine.getChildren().add( new TextField(String.valueOf(confFromFile.getConfFromInt(i).numberOfhiddenLayers)));
+			TextField nbHiddenLayer = new TextField(String.valueOf(confFromFile.getConfFromInt(i).numberOfhiddenLayers));
+			nbHiddenLayer.setTextFormatter( new TextFormatter<>(newValue -> {
+			    if (regexInt.matcher(newValue.getControlNewText()).matches()) {
+			        return newValue;
+			    }
+			    return null;
+			}));
+			confLine.getChildren().add(nbHiddenLayer);
 			System.out.print(confFromFile.getConfFromInt(i).numberOfhiddenLayers + "\n");
 			
 			// REMOVE BTN

@@ -13,6 +13,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+
+/**
+ * Controller of the cleaning model vue 
+ * 
+ * @author Aubertin Emmanuel (aka aTHO_)
+ * @version 0.1
+ * @since 0.1
+ */
 public class ModelListController {
 	
 	@FXML VBox VBoxFileList;
@@ -40,7 +48,12 @@ public class ModelListController {
 	   }
 	}
 	
-	public void handleDeleteModel(ActionEvent event) // Action a finir
+	/**
+	 * Delete model file & fx componement which are checked
+	 * 
+	 * @author Aubertin Emmanuel (aka aTHO_)
+	 */
+	public void handleDeleteModel()
 	{
 		System.out.println("|----------------------------|");
 		System.out.println("|-- DELETE MODEL FILE        |");
@@ -63,4 +76,5 @@ public class ModelListController {
 		VBoxFileList.getChildren().removeAll(deleteCheckBox);
 	}
 	
+
 }
