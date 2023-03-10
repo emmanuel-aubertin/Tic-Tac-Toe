@@ -23,9 +23,6 @@ public class TrainingController {
 	@FXML
 	private ProgressBar progressBarLearn;
 	
-
-	private int abs = 7;
-	
 	@FXML
 	private Label textLearn;
 	
@@ -34,7 +31,18 @@ public class TrainingController {
 	
 	private MultiLayerPerceptron net;
 	
+	String level;
 	
+	public void setVariable(String variableValue) {
+		level = variableValue;
+	}
+	
+	/**
+	 * The function processes the button press, starts the learning process, the progress can be seen on the progress bar. 
+	 * After that, the training result is uploaded to a file with the extension ".srl"
+	 * 
+	 * @author Svitlana Temkaieva (lanebx)
+	 */
 	@FXML
 	public void onButtonLearnClicked(ActionEvent event) {
 		buttonLearn = (Button) event.getSource();
@@ -42,13 +50,17 @@ public class TrainingController {
 		
 		HashMap<Integer, Coup> coups = Test.loadGames("./resources/dataset/Tic_tac_initial_results.csv");
 		Test.saveGames(coups, "./resources/train_dev_test/", 0.7);
+		
+		
 		//
 		// LOAD CONFIG ...
 		//
 		ConfigFileLoader cfl = new ConfigFileLoader();
 		cfl.loadConfigFile("./resources/config.txt");
+		
+		
 		// Choose the write configuration
-		Config config = cfl.get("F");
+		Config config = cfl.get(level);
 		System.out.println("Test.main() : " + config);
 		//
 		//TRAIN THE MODEL ...
@@ -82,8 +94,7 @@ public class TrainingController {
 		String fileName = "model_" + config.learningRate + "_" +  config.learningRate + "_" + config.numberOfhiddenLayers + ".srl";
 		File file = new File(fileName); 
 		
-		
-		
+		//	Starting iterations for training, displaying progress in the progress bar
 	    Task<Integer> task = new Task<Integer>() {
 			double error = 0.0 ;
 	         @Override protected Integer call() throws Exception {
@@ -108,6 +119,7 @@ public class TrainingController {
 	 				System.out.println("Learning completed!");
 	 				updateMessage("Learning completed!");
 	 				
+	 				// Saving the learning result to a file	 				
 	 				String filePath = "./resources/train/" + "model_" 
 	 						+ config.numberOfhiddenLayers + "_" + config.hiddenLayerSize + "_" + config.learningRate + ".srl";
 	 				if(net.save(filePath)) {
@@ -121,13 +133,12 @@ public class TrainingController {
 	 		}  
 	     };
 		
-	     
+	     //	Subscribe to changes     
 	     progressBarLearn.progressProperty().bind(task.progressProperty());
 	     textLearn.textProperty().bind(task.messageProperty());
 
 	     new Thread(task).start();
 	    		 
 	}
-	
 	
 }

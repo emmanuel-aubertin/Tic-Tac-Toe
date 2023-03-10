@@ -16,27 +16,29 @@
            <Menu mnemonicParsing="false" text="Settings">
              <items>
                <MenuItem mnemonicParsing="false" onAction="#handleOpenConfiguration" text="Set Configuration" />
-                 <MenuItem mnemonicParsing="false" onAction="#handleOpenModel" text="See Model" />
+               <MenuItem mnemonicParsing="false" onAction="#handleOpenModel" text="See Model" />
              </items>
            </Menu>
          </menus>
        </MenuBar>
    	<VBox alignment="CENTER" layoutX="251.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity">
    		<children>
-		             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchIA" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play againts IA" textAlignment="CENTER">
-		               <StackPane.margin>
-		                  <Insets bottom="35.0" />
-		               </StackPane.margin>
-		            </Button>
-		             <ComboBox fx:id="difficultySelector" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css">
-		               <StackPane.margin>
-		                  <Insets top="35.0" />
-		               </StackPane.margin>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-		            </ComboBox>
-            </children>
+	        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchIA" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play againts IA" textAlignment="CENTER">
+	          <StackPane.margin>
+	             <Insets bottom="35.0" />
+	          </StackPane.margin>
+	       	</Button>
+	       	
+            <ComboBox fx:id="difficultySelector" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css">
+              <StackPane.margin>
+                 <Insets top="35.0" />
+              </StackPane.margin>
+              
+              <VBox.margin>
+                 <Insets top="5.0" />
+              </VBox.margin>
+           </ComboBox>
+       </children>
       </VBox>
     </children>
  </AnchorPane>

@@ -3,16 +3,19 @@ package application;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.Objects;
 
 import ai.Config;
 import ai.ConfigFileLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
@@ -27,6 +30,8 @@ import javafx.stage.Stage;
 public class MainSceneController {
 	
 	@FXML private ComboBox<String> difficultySelector;
+	
+	public String level;
 	
 	
 	@FXML public void initialize() {
@@ -89,11 +94,38 @@ public class MainSceneController {
 		}
 	}
 	
+	/**
+	 * Opens a window to start AI training, before checking for the corresponding file. 
+	 * An argument is passed to the function and to the modal window to select the desired level of complexity.
+	 * 
+	 * @author Svitlana Temkaieva (lanebx)
+	 */
+	public void handleOpenTrainingWindow(String variableValue) {
+		Parent root;
+		try {
+		    FXMLLoader loader = new FXMLLoader(getClass().getResource("training.fxml"));
+			Stage newStage = new Stage();
+			
+			Parent parent = loader.load();
+		    TrainingController controller = loader.getController();
+		    controller.setVariable(variableValue);
+
+			
+			Scene MainScene = new Scene(parent);		
+			newStage.setScene(MainScene);
+			newStage.setTitle("Хрестики_нулики");
+			newStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	
 	/**
 	 * Launch game againts IA or train IA before.
 	 * 
-	 * @author Aubertin Emmanuel (aka aTHO_)
+	 * @author Aubertin Emmanuel (aka aTHO_), Svitlana Temkaieva (lanebx)
 	 */
 	public void handleLaunchIA(ActionEvent event) {
 		System.out.println("|----------------------------|");
@@ -101,7 +133,7 @@ public class MainSceneController {
 		System.out.println("|----------------------------|");
 		
 		// GET LEVEL SELECTED
-		String level = difficultySelector.getSelectionModel().getSelectedItem().toString();
+		level = difficultySelector.getSelectionModel().getSelectedItem().toString();
 		System.out.println("\t" + level);
 		
 		// GET CONF
@@ -123,14 +155,20 @@ public class MainSceneController {
 	    
 	    // CHECK IF THE MODEL HAS BEEN TRAINED.
 	    //Example of file : model_hiddenLayerSize_learningRate_numberOfhiddenLayers.srl
+	   String fileName = "model_" + iaConf.numberOfhiddenLayers + "_" + iaConf.hiddenLayerSize + "_" + iaConf.learningRate + ".srl";
 	   for(String file : trainFolder.list(filter)) {
-		   if(file == "model_" + iaConf.numberOfhiddenLayers + "_" + iaConf.hiddenLayerSize + "_" + iaConf.learningRate + ".srl" ) {
+		   if(Objects.equals(file, fileName)) {
 			   System.out.println("\tModel existe " + file);
 			   System.out.println("\tLainching the GAME");
+			   System.out.println("\tMODEL NOT NEED TO BE TRAINED");
 			   return;
 		   }	   
 	   }
+	   
 	   System.out.println("\tMODEL NEED TO BE TRAINED");
+	   
+	   handleOpenTrainingWindow(level);
+	      
 	   return;
 	}
 }
