@@ -14,7 +14,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 
-			Parent parent = FXMLLoader.load(getClass().getResource("game.fxml"));
+			Parent parent = FXMLLoader.load(getClass().getResource("PvEVue.fxml"));
 
 			
 			Scene MainScene = new Scene(parent);		

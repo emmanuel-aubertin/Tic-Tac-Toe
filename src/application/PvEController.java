@@ -9,6 +9,7 @@ import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import application.Game;
 
 public class PvEController {
 	
@@ -32,15 +33,37 @@ public class PvEController {
 	@FXML private Pane pane8;
 	@FXML private Text sign8;
 	
-	private ArrayList<Integer> game;;
-	private static String x = "⚔️";
-	private static String o = "O️";
-
+	private Game game;
+	private static String playerSign = "⚔️";
+	private static String iaSign = "¤";
+	private static boolean canPlay = true;
 	@FXML public void initialize() {
-		game = new ArrayList<Integer>();
+		game = new Game();
 	}
 	
+	private boolean gameResult() {
+		int resultGame = game.checkIfWin();
+		System.out.println("RESUTL ===> " + resultGame);
+		if(resultGame == -1) 
+		{
+			System.out.println("Human win");
+			return true;
+		} 
+		if(resultGame == 1)
+		{
+			System.out.println("IA win");
+			return true;
+		}
+		return false;
+	}
+
+	
 	@FXML public void handlePlay(MouseEvent event) {
+		
+		System.out.println(canPlay);
+		if(!canPlay) {
+			return;
+		}
 		System.out.println("Get pane clicked");
 		Text textPlayed;
 		if(event.getTarget() instanceof Pane) {
@@ -50,11 +73,29 @@ public class PvEController {
 		}
 		
 		int posPlayed = Character.getNumericValue( textPlayed.getId().charAt(textPlayed.getId().length() - 1));
+		if(!game.play(posPlayed, -1))
+		{
+			return;
+		}
+		System.out.print(game);
+		textPlayed.setText(playerSign);
 		
-		textPlayed.setText(x);
+		// if someone win
+		if(gameResult()) {
+			return;
+		}
 		
-		System.out.println("Get the id");
+		playIA();
+		
+		if(gameResult()) {
+			return;
+		}
+		
 		System.out.println("You clicked ON " + posPlayed);
 	}
-
+	
+	private void playIA() {
+		int[] gameBoard = game.getGame();
+		
+	}
 }
