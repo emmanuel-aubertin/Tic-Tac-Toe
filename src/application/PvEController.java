@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
+import ai.ConfigFileLoader;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import application.Game;
+import ai.Config;
 
 public class PvEController {
 	
@@ -38,7 +40,14 @@ public class PvEController {
 	private static String iaSign = "¤";
 	private static boolean canPlay = true;
 	@FXML public void initialize() {
+		System.out.println("|----------------------------|");
+		System.out.println("|-- NEW GAME                 |");
+		System.out.println("|----------------------------|");
 		game = new Game();
+		ConfigFileLoader confFromFile = new ConfigFileLoader();
+		confFromFile.loadConfigFile("./resources/config.txt");
+		Config lvlConf = confFromFile.get("Facile");
+		
 	}
 	
 	private boolean gameResult() {
