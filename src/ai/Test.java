@@ -395,8 +395,6 @@ public class Test {
 				else
 					output[0] = 0.0;
 
-
-
 				error += net.backPropagate(inputs, output);
 
 				if ( i % 100000 == 0 ) System.out.println("Error at step "+i+" is "+ (error/(double)i));

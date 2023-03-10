@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.util.HashMap;
 
 import ai.Config;
@@ -77,7 +78,11 @@ public class TrainingController {
 			System.out.println("Load data ...");
 			System.out.println("---");
 		}
-
+		
+		String fileName = "model_" + config.learningRate + "_" +  config.learningRate + "_" + config.numberOfhiddenLayers + ".srl";
+		File file = new File(fileName); 
+		
+		
 		
 	    Task<Integer> task = new Task<Integer>() {
 			double error = 0.0 ;
@@ -102,6 +107,14 @@ public class TrainingController {
 	 			if ( true ) {
 	 				System.out.println("Learning completed!");
 	 				updateMessage("Learning completed!");
+	 				
+	 				String filePath = "./resources/train/" + "model_" 
+	 						+ config.numberOfhiddenLayers + "_" + config.hiddenLayerSize + "_" + config.learningRate + ".srl";
+	 				if(net.save(filePath)) {
+	 				    System.out.println("Model saved successfully to file: " + filePath);
+	 				} else {
+	 				    System.out.println("Failed to save model to file: " + filePath);
+	 				}
 	 			}
 	 			
 	 			return null;
