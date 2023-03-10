@@ -12,6 +12,10 @@ public class Game {
 		return game[pos];
 	}
 	
+	/**
+	 * Check if someone win the game
+	 * @return No winner => 0 | Winner sign
+	 */
 	public int checkIfWin() {
 		for(int i = 0; i < 3; i++)
 		{
@@ -36,6 +40,13 @@ public class Game {
 	}
 	
 	
+	/**
+	 * Play on the grid
+	 * 
+	 * @param pos position to play on the grid
+	 * @param sign sign to play
+	 * @return true if is played
+	 */
 	public boolean play(int pos, int sign) {
 		if(game[pos] != 0) {
 			return false;
