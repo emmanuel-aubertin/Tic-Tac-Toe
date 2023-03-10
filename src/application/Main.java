@@ -14,12 +14,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 
-			Parent parent = FXMLLoader.load(getClass().getResource("training.fxml"));
+			Parent parent = FXMLLoader.load(getClass().getResource("mainScene.fxml"));
 
 			
 			Scene MainScene = new Scene(parent);		
 			primaryStage.setScene(MainScene);
 			primaryStage.setTitle("Хрестики_нулики");
+			primaryStage.setResizable(false);
 			primaryStage.show();
 
 		} catch (IOException e) {
