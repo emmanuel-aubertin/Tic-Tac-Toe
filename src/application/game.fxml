@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
+      <Text fx:id="playersSwitch" layoutX="262.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player : 1" wrappingWidth="76.8564453125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
       <GridPane gridLinesVisible="true" layoutX="151.0" layoutY="85.0" prefHeight="231.0" prefWidth="298.0" AnchorPane.topAnchor="85.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -19,41 +27,44 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane fx:id="pane3" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <children>
-                  <Text fx:id="sign3" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
-                     <font>
-                        <Font size="64.0" />
-                     </font></Text>
-               </children>
-            </Pane>
             <Pane fx:id="pane0" onMouseClicked="#handlePlay" prefHeight="20.0" prefWidth="82.0">
                <children>
-                  <Text fx:id="sign0" layoutX="27.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="45.0">
+                  <Text fx:id="sign0" layoutX="27.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="45.0">
                      <font>
                         <Font size="64.0" />
-                     </font></Text>
+                     </font>
+                  </Text>
                </children>
             </Pane>
             <Pane fx:id="pane1" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Text fx:id="sign1" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign1" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
-                     </font></Text>
+                     </font>
+                  </Text>
                </children>
             </Pane>
             <Pane fx:id="pane2" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Text fx:id="sign2" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign2" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
+            <Pane fx:id="pane3" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Text fx:id="sign3" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="64.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
             <Pane fx:id="pane4" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign4" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign4" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
@@ -61,7 +72,7 @@
             </Pane>
             <Pane fx:id="pane5" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign5" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign5" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
@@ -69,7 +80,7 @@
             </Pane>
             <Pane fx:id="pane6" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign6" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign6" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
@@ -77,7 +88,7 @@
             </Pane>
             <Pane fx:id="pane7" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign7" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign7" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
@@ -85,7 +96,7 @@
             </Pane>
             <Pane fx:id="pane8" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign8" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+                  <Text fx:id="sign8" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
