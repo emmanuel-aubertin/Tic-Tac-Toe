@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,7 +16,8 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <GridPane gridLinesVisible="true" layoutX="151.0" layoutY="85.0" prefHeight="231.0" prefWidth="298.0" AnchorPane.topAnchor="85.0">
+      <Button fx:id="btnNewGame" onAction="#handleNewGame" layoutX="262.0" layoutY="336.0" mnemonicParsing="false" text="New game" visible="false"/>
+      <GridPane fx:id="gridPane" gridLinesVisible="true" layoutX="151.0" layoutY="85.0" prefHeight="231.0" prefWidth="298.0" AnchorPane.topAnchor="85.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

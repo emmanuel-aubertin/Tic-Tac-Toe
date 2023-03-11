@@ -7,13 +7,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class GameController {
+	private static final int ROWS = 3;
+    private static final int COLUMNS = 3;
+	
 	@FXML private Pane pane0;
 	@FXML private Text sign0;
 	@FXML private Pane pane1;
@@ -37,42 +42,114 @@ public class GameController {
 	@FXML 
 	private Text playersSwitch;
 	
-	private ArrayList<Integer> game = new ArrayList<Integer>();
-	private static String x = "⚔️";
-	private static String o = "O️";
+	@FXML
+	GridPane gridPane;
 	
-	private Boolean player1 = true;
+	@FXML 
+	private Button btnNewGame;
+	
+	private ArrayList<String> game = new ArrayList<>();
+	{
+		for (int i = 0; i < ROWS * COLUMNS; i++) {
+	        game.add("");
+	    }
+	}
+	
+	private static final String X = "X";
+	private static final String O = "O";
+	private boolean playerX = true;
 
+	@FXML 
+	public void handleNewGame(ActionEvent event) {
+		gridPane.setDisable(false);
+	    // Очистить все поля Text внутри Pane
+	    for (Node node : pane0.getParent().getChildrenUnmodifiable()) {
+	        if (node instanceof Pane) {
+	            ((Text) ((Pane) node).getChildren().get(0)).setText("");
+	            ((Text) ((Pane) node).getChildren().get(0)).setDisable(false);
+	        }
+	    }
+	    // Сбросить игру
+	    game.clear();
+	    for (int i = 0; i < ROWS * COLUMNS; i++) {
+	        game.add("");
+	    }
+	    playerX = true;
+	    playersSwitch.setText("Player : X");
+	    btnNewGame.setVisible(false);
+	}
 	
-	@FXML public void handlePlay(MouseEvent event) {
+	@FXML 
+	public void handlePlay(MouseEvent event) {
 		System.out.println("Get pane clicked");
 //		Image imageO = new Image("./resources/images/TicTacToe/circle.png");
 //		Image imageX = new Image("./resources/images/TicTacToe/cross.png");
 		
 //		signImg0.setImage(imageO);
 		
-		Text textPlayed;
-		if(event.getTarget() instanceof Pane) {
-			textPlayed = (Text)((Pane) event.getTarget()).getChildren().get(0);
-		} else {
-			textPlayed = ((Text) event.getTarget());
-		}
+		Pane clickedPane = (Pane) event.getSource();
+		Text textPlayed = (Text) clickedPane.getChildren().get(0);
+	    int posPlayed = Integer.parseInt(clickedPane.getId().substring(4));
 		
-		int posPlayed = Character.getNumericValue( textPlayed.getId().charAt(textPlayed.getId().length() - 1));
-		
-		if (player1) {
-			textPlayed.setText(x);
-			playersSwitch.setText("Player : 2");
-			player1 = false;
-		} else {
-			textPlayed.setText(o);
-			playersSwitch.setText("Player : 1");
-			player1 = true;
+		if (playerX) {
+	        textPlayed.setText(X);
+	        game.set(posPlayed, X);
+	        playersSwitch.setText("Player : O");
+	    } else {
+	        textPlayed.setText(O);
+	        game.set(posPlayed, O);
+	        playersSwitch.setText("Player : X");
+	    }
+		 playerX = !playerX;
+		 
+		String winner = checkWin();
+		if (winner != null) {
+		    if (winner.equals(X) || winner.equals(O)) {
+		    	playersSwitch.setText(winner + " wins!");
+		        btnNewGame.setVisible(true);
+		        gridPane.setDisable(true);
+		    } else if (game.stream().noneMatch(String::isEmpty)) {
+		    	System.out.println("Нету ходов");
+		        btnNewGame.setVisible(true);
+		        gridPane.setDisable(true);
+		    }
 		}
 
-		
-		System.out.println("Get the id");
-		System.out.println("You clicked ON " + posPlayed);
 	}
+	
+	private String checkWin() {
+	    // Проверяем горизонтали
+	    for (int row = 0; row < ROWS; row++) {
+	        int start = row * COLUMNS;
+	        if (game.get(start).equals(game.get(start + 1)) && game.get(start).equals(game.get(start + 2))) {
+	            return game.get(start);
+	        }
+	    }
+
+	    // Проверяем вертикали
+	    for (int col = 0; col < COLUMNS; col++) {
+	        if (game.get(col).equals(game.get(col + COLUMNS)) && game.get(col).equals(game.get(col + COLUMNS * 2))) {
+	            return game.get(col);
+	        }
+	    }
+
+	    // Проверяем диагонали
+	    if (game.get(0).equals(game.get(4)) && game.get(0).equals(game.get(8))) {
+	        return game.get(0);
+	    }
+	    if (game.get(2).equals(game.get(4)) && game.get(2).equals(game.get(6))) {
+	        return game.get(2);
+	    }
+
+	    return null;
+	}
+	
+//	private void disableAllCells() {
+//	    for (Node node : pane0.getParent().getChildrenUnmodifiable()) {
+//	        if (node instanceof Pane) {
+//	            ((Pane) node).getChildren().get(0).setDisable(true);
+//	        }
+//	    }
+//	}
 
 }
