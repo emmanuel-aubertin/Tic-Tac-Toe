@@ -1,20 +1,29 @@
 package application;
 
+
 import java.util.ArrayList;
 
 import ai.ConfigFileLoader;
+import ai.MultiLayerPerceptron;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import application.Game;
 import ai.Config;
 
 public class PvEController {
 	
+	@FXML private AnchorPane parent;
 	
 	@FXML private Pane pane0;
 	@FXML private Text sign0;
@@ -36,9 +45,13 @@ public class PvEController {
 	@FXML private Text sign8;
 	
 	private Game game;
+	private MultiLayerPerceptron iaNet;
+	
 	private static String playerSign = "⚔️";
-	private static String iaSign = "¤";
+	private static String iaSign = "O";
 	private static boolean canPlay = true;
+	
+	
 	@FXML public void initialize() {
 		System.out.println("|----------------------------|");
 		System.out.println("|-- NEW GAME                 |");
@@ -47,11 +60,14 @@ public class PvEController {
 		ConfigFileLoader confFromFile = new ConfigFileLoader();
 		confFromFile.loadConfigFile("./resources/config.txt");
 		Config lvlConf = confFromFile.get("Facile");
-		
+		//String modelFile = "./resources/train/"+ "model_" + 
+		//					lvlConf.numberOfhiddenLayers + "_" + lvlConf.hiddenLayerSize + "_" + lvlConf.learningRate + ".srl";
+		String modelFile =  "./resources/train/mlp_1000.srl";
+		iaNet = MultiLayerPerceptron.load(modelFile);
 	}
 	
 	private boolean gameResult() {
-		int resultGame = game.checkIfWin();
+		double resultGame = game.checkIfWin();
 		System.out.println("RESUTL ===> " + resultGame);
 		if(resultGame == -1) 
 		{
@@ -68,9 +84,8 @@ public class PvEController {
 
 	
 	@FXML public void handlePlay(MouseEvent event) {
-		
 		System.out.println(canPlay);
-		if(!canPlay) {
+		if(!canPlay || gameResult()) {
 			return;
 		}
 		System.out.println("Get pane clicked");
@@ -94,6 +109,7 @@ public class PvEController {
 			return;
 		}
 		
+
 		playIA();
 		
 		if(gameResult()) {
@@ -104,7 +120,26 @@ public class PvEController {
 	}
 	
 	private void playIA() {
-		int[] gameBoard = game.getGame();
-		
+
+		double[] gameBoard = game.getGame();
+		double[] newGame = iaNet.forwardPropagation(gameBoard);
+		for(int i = 0; i < 3; i++) {
+			System.out.println(newGame[i*3] + " | " + newGame[i*3+1] +" | " + newGame[i*3+2] + "\n-------------");
+		}
+		int posPlayed = 0;
+		double maxProbs = 99;
+		for(int i=0; i < 9; i++) {
+			if(maxProbs > newGame[i] && game.isPlayable(i)) {
+				System.out.println("IA play : " + i);
+				posPlayed = i;
+				maxProbs =  newGame[i];
+			}
+		}
+		game.play(posPlayed, 1);
+		Text sign = (Text) parent.lookup("#sign" + posPlayed);
+		Timeline timeline  = new Timeline();
+		Duration delayBetweenMessages = Duration.millis(300);
+		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> sign.setText(iaSign)));
+		timeline.play();
 	}
 }
