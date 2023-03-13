@@ -1,11 +1,15 @@
 /*
  * Checkbox
  */
+ .check-box {
+    -fx-text-fill: #F5F8DE;
+}
+
  .check-box .box {
 
-	-fx-background-color: white;
-	-fx-border-color:grey;
-	-fx-border-radius:3px;
+	-fx-background-color: #F5F8DE;
+	-fx-border-color: grey;
+	-fx-border-radius: 3px;
     -fx-padding: 3px;
     -fx-border-insets: 3px;
     -fx-background-insets: 3px;
@@ -22,4 +26,3 @@
 	
 	-fx-background-color: #28a3f4;
 }
-
