@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import style.ButtonStyle;
 
 
 /**
@@ -30,6 +31,8 @@ import javafx.stage.Stage;
 public class MainSceneController {
 	
 	@FXML private ComboBox<String> difficultySelector;
+	@FXML private Button btnPvE;
+	@FXML private Button btnPvP;
 	
 	public String level;
 	
@@ -47,6 +50,8 @@ public class MainSceneController {
 			options.add(confFromFile.getConfFromInt(i).level);
 		}
 		difficultySelector.getItems().addAll(options);
+		btnPvE.setSkin(new ButtonStyle(btnPvE));
+		btnPvP.setSkin(new ButtonStyle(btnPvP));
 	}
 	
 	/**

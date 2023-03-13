@@ -9,12 +9,12 @@
 <AnchorPane styleClass="background" stylesheets="@application.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfigVueController">
    <children>
       <VBox fx:id="VBoxView" layoutX="6.0" layoutY="87.0" prefHeight="256.0" prefWidth="589.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <Button layoutX="536.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Apply" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button fx:id="btnApply" layoutX="536.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Apply" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
       <Text layoutX="210.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic-Tac-Toe AI">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
-      <Button layoutX="483.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleAddBtn" text="Add" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="76.0" />
+      <Button fx:id="btnAdd" layoutX="483.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleAddBtn" text="Add" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="76.0" />
    </children>
 </AnchorPane>
