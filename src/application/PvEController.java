@@ -46,7 +46,7 @@ public class PvEController {
 	
 	private Game game;
 	private MultiLayerPerceptron iaNet;
-	
+	private String level;
 	private static String playerSign = "⚔️";
 	private static String iaSign = "O";
 	private static boolean canPlay = true;
@@ -57,13 +57,16 @@ public class PvEController {
 		System.out.println("|-- NEW GAME                 |");
 		System.out.println("|----------------------------|");
 		game = new Game();
-		ConfigFileLoader confFromFile = new ConfigFileLoader();
-		confFromFile.loadConfigFile("./resources/config.txt");
-		Config lvlConf = confFromFile.get("Facile");
-		//String modelFile = "./resources/train/"+ "model_" + 
-		//					lvlConf.numberOfhiddenLayers + "_" + lvlConf.hiddenLayerSize + "_" + lvlConf.learningRate + ".srl";
-		String modelFile =  "./resources/train/mlp_1000.srl";
-		iaNet = MultiLayerPerceptron.load(modelFile);
+		if(level != null) {
+			ConfigFileLoader confFromFile = new ConfigFileLoader();
+			confFromFile.loadConfigFile("./resources/config.txt");
+			Config lvlConf = confFromFile.get(level);
+			System.out.println("Level : " + level);
+			String modelFile = "./resources/train/"+ "model_" + 
+								lvlConf.numberOfhiddenLayers + "_" + lvlConf.hiddenLayerSize + "_" + lvlConf.learningRate + ".srl";
+			iaNet = MultiLayerPerceptron.load(modelFile);
+		}
+
 	}
 	
 	private boolean gameResult() {
@@ -119,6 +122,17 @@ public class PvEController {
 		System.out.println("You clicked ON " + posPlayed);
 	}
 	
+	public void setVariable(String var) {
+		level = var;
+		ConfigFileLoader confFromFile = new ConfigFileLoader();
+		confFromFile.loadConfigFile("./resources/config.txt");
+		Config lvlConf = confFromFile.get(level);
+		System.out.println("Level : " + level);
+		String modelFile = "./resources/train/"+ "model_" + 
+							lvlConf.numberOfhiddenLayers + "_" + lvlConf.hiddenLayerSize + "_" + lvlConf.learningRate + ".srl";
+		iaNet = MultiLayerPerceptron.load(modelFile);
+	}
+	
 	private void playIA() {
 
 		double[] gameBoard = game.getGame();
@@ -138,7 +152,7 @@ public class PvEController {
 		game.play(posPlayed, 1);
 		Text sign = (Text) parent.lookup("#sign" + posPlayed);
 		Timeline timeline  = new Timeline();
-		Duration delayBetweenMessages = Duration.millis(300);
+		Duration delayBetweenMessages = Duration.millis(200);
 		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> sign.setText(iaSign)));
 		timeline.play();
 	}

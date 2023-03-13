@@ -101,14 +101,13 @@ public class MainSceneController {
 	 * @author Svitlana Temkaieva (lanebx)
 	 */
 	public void handleOpenTrainingWindow(String variableValue) {
-		Parent root;
 		try {
 		    FXMLLoader loader = new FXMLLoader(getClass().getResource("training.fxml"));
 			Stage newStage = new Stage();
 			
 			Parent parent = loader.load();
 		    TrainingController controller = loader.getController();
-		    controller.setVariable(variableValue);
+		     controller.setVariable(variableValue);
 
 			
 			Scene MainScene = new Scene(parent);		
@@ -120,6 +119,27 @@ public class MainSceneController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	
+	public void handleOpenPvEWindow(String level) {
+		try {
+		    FXMLLoader loader = new FXMLLoader(getClass().getResource("PvEVue.fxml"));
+			Stage newStage = new Stage();
+			
+			Parent parent = loader.load();
+		    PvEController controller = loader.getController();
+		     controller.setVariable(level);
+
+			
+			Scene MainScene = new Scene(parent);		
+			newStage.setScene(MainScene);
+			newStage.setTitle("Хрестики_нулики");
+			newStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -157,10 +177,10 @@ public class MainSceneController {
 	    //Example of file : model_hiddenLayerSize_learningRate_numberOfhiddenLayers.srl
 	   String fileName = "model_" + iaConf.numberOfhiddenLayers + "_" + iaConf.hiddenLayerSize + "_" + iaConf.learningRate + ".srl";
 	   for(String file : trainFolder.list(filter)) {
-		   if(Objects.equals(file, fileName)) {
+		   if(file.equals( fileName)) {
 			   System.out.println("\tModel existe " + file);
 			   System.out.println("\tLainching the GAME");
-			   System.out.println("\tMODEL NOT NEED TO BE TRAINED");
+			   handleOpenPvEWindow(level);
 			   return;
 		   }	   
 	   }
