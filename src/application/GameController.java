@@ -15,6 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * Controller of the game P2P vue
+ * 
+ * @author Svitlana Temkaieva (lanebx)
+ */
 public class GameController {
 	private static final int ROWS = 3;
     private static final int COLUMNS = 3;
@@ -59,6 +64,13 @@ public class GameController {
 	private static final String O = "O";
 	private boolean playerX = true;
 
+	
+	/**
+	 * When the game is over, clicking on this button allows you to start a new game.
+	 * The field with the players' moves is cleared, the result is reset
+	 * 
+	 * @author Svitlana Temkaieva (lanebx)
+	 */
 	@FXML 
 	public void handleNewGame(ActionEvent event) {
 		gridPane.setDisable(false);

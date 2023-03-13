@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
 import ai.Config;
@@ -14,15 +13,16 @@ import ai.Test;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.stage.Stage;
 
 
+/**
+ * Controller of the training vue
+ * 
+ * @author Svitlana Temkaieva (lanebx)
+ */
 public class TrainingController {
 	
 	@FXML
@@ -71,7 +71,7 @@ public class TrainingController {
 		//TRAIN THE MODEL ...
 		//
 		// Number of learning iterration
-		double epochs = 8000000; 
+		double epochs = 100000 ; 
 		HashMap<Integer, Coup> mapTrain = Test.loadCoupsFromFile("./resources/train_dev_test/train.txt");
 		
 		if ( true ) {
@@ -124,7 +124,6 @@ public class TrainingController {
 	 				System.out.println("Learning completed!");
 	 				updateMessage("Learning completed!");
 	 				
-	 				
 	 				// Saving the learning result to a file	 				
 	 				String filePath = "./resources/train/" + "model_" 
 	 						+ config.numberOfhiddenLayers + "_" + config.hiddenLayerSize + "_" + config.learningRate + ".srl";
@@ -132,25 +131,6 @@ public class TrainingController {
 	 				    System.out.println("Model saved successfully to file: " + filePath);
 	 				} else {
 	 				    System.out.println("Failed to save model to file: " + filePath);
-	 				}
-	 				
-	 				
-	 				try {
-	 				    FXMLLoader loader = new FXMLLoader(getClass().getResource("PvEVue.fxml"));
-	 					Stage newStage = new Stage();
-	 					
-	 					Parent parent = loader.load();
-	 				    PvEController controller = loader.getController();
-	 				     controller.setVariable(level);
-
-	 					
-	 					Scene MainScene = new Scene(parent);		
-	 					newStage.setScene(MainScene);
-	 					newStage.setTitle("Хрестики_нулики");
-	 					newStage.show();
-	 				} catch (IOException e) {
-	 					// TODO Auto-generated catch block
-	 					e.printStackTrace();
 	 				}
 	 			}
 	 			

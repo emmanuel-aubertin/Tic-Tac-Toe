@@ -142,6 +142,23 @@ public class MainSceneController {
 		}
 	}
 	
+	public void handleLaunchP2P() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+			Stage newStage = new Stage();
+			
+			Parent parent = loader.load();
+		     
+		     Scene MainScene = new Scene(parent);		
+				newStage.setScene(MainScene);
+				newStage.setTitle("Хрестики_нулики");
+				newStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Launch game againts IA or train IA before.
 	 * 

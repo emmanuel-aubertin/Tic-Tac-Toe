@@ -23,6 +23,11 @@
        </MenuBar>
    	<VBox alignment="CENTER" layoutX="251.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity">
    		<children>
+   			<Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchP2P" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play P2P" textAlignment="CENTER">
+	          <StackPane.margin>
+	             <Insets bottom="35.0" />
+	          </StackPane.margin>
+	       	</Button>
 	        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchIA" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play againts IA" textAlignment="CENTER">
 	          <StackPane.margin>
 	             <Insets bottom="35.0" />
