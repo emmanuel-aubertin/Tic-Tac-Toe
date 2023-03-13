@@ -18,7 +18,7 @@ Button, ComboBox{
 }
 
 .progress-bar > .track {
-  -fx-text-box-border: red;
+  -fx-text-box-border: #F5F8DE;
   -fx-control-inner-background: #E1332D;
 }
 

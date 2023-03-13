@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import style.ButtonStyle;
 
 
 /**
@@ -40,6 +41,8 @@ public class TrainingController {
 	
 	public void setVariable(String variableValue) {
 		level = variableValue;
+		
+		buttonLearn.setSkin(new ButtonStyle(buttonLearn));
 	}
 	
 	/**

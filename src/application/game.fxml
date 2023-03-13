@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
-      <Text fx:id="playersSwitch" fill="WHITE" layoutX="262.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteText" text="Player : 1" wrappingWidth="76.8564453125">
+      <Text fx:id="playersSwitch" fill="#F5F8DE" layoutX="262.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteText" text="Player : 1" wrappingWidth="76.8564453125">
          <font>
             <Font size="18.0" />
          </font>

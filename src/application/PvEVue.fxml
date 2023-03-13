@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PvEController">
    <children>
-      <GridPane gridLinesVisible="true" layoutX="151.0" layoutY="85.0" prefHeight="231.0" prefWidth="298.0" AnchorPane.topAnchor="85.0">
+      <GridPane gridLinesVisible="true" layoutX="151.0" layoutY="85.0" prefHeight="231.0" prefWidth="298.0" styleClass="gridPane" stylesheets="@application.css" AnchorPane.topAnchor="85.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -22,73 +22,73 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane fx:id="pane3" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane fx:id="pane3" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign3" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign3" fill="#f5f8de" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane0" onMouseClicked="#handlePlay" prefHeight="20.0" prefWidth="82.0">
+            <Pane fx:id="pane0" onMouseClicked="#handlePlay" prefHeight="20.0" prefWidth="82.0" styleClass="gridPane" stylesheets="@application.css">
                <children>
-                  <Text fx:id="sign0" layoutX="27.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="45.0">
+                  <Text fx:id="sign0" fill="#f5f8de" layoutX="27.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="45.0">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane1" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <Pane fx:id="pane1" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.columnIndex="1">
                <children>
-                  <Text fx:id="sign1" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign1" fill="#f5f8de" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane2" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <Pane fx:id="pane2" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.columnIndex="2">
                <children>
-                  <Text fx:id="sign2" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign2" fill="#f5f8de" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane4" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane fx:id="pane4" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign4" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign4" fill="#f5f8de" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane5" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Pane fx:id="pane5" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign5" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign5" fill="#f5f8de" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane6" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Pane fx:id="pane6" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign6" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign6" fill="#f5f8de" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane7" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Pane fx:id="pane7" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign7" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign7" fill="#f5f8de" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
                </children>
             </Pane>
-            <Pane fx:id="pane8" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Pane fx:id="pane8" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" styleClass="gridPane" stylesheets="@application.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign8" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="sign8" fill="#f5f8de" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font size="64.0" />
                      </font></Text>
