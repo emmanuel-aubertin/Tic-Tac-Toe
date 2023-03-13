@@ -4,3 +4,21 @@ Button, ComboBox{
     -fx-alignment: center ;
     -fx-padding: 5 ;
 }
+
+.background {
+	-fx-background-color: #9E2B25;
+}
+
+.gridPane {
+	-fx-border-color: #fff;
+}
+
+.whiteText {
+	-fx-text-fill:  #fff;
+}
+
+.progress-bar > .track {
+  -fx-text-box-border: red;
+  -fx-control-inner-background: #E1332D;
+}
+
