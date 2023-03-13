@@ -142,6 +142,11 @@ public class MainSceneController {
 		}
 	}
 	
+	/**
+	 * Launch game P2P or train IA before.
+	 * 
+	 * @author Svitlana Temkaieva (lanebx)
+	 */
 	public void handleLaunchP2P() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));

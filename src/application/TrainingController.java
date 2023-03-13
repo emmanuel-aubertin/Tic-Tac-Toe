@@ -120,7 +120,7 @@ public class TrainingController {
 					updateProgress(i, epochs);
 				}
 	        	 
-	 			if ( true ) {
+	 			if(true) {
 	 				System.out.println("Learning completed!");
 	 				updateMessage("Learning completed!");
 	 				

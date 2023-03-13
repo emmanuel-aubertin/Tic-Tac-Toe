@@ -155,13 +155,5 @@ public class GameController {
 
 	    return null;
 	}
-	
-//	private void disableAllCells() {
-//	    for (Node node : pane0.getParent().getChildrenUnmodifiable()) {
-//	        if (node instanceof Pane) {
-//	            ((Pane) node).getChildren().get(0).setDisable(true);
-//	        }
-//	    }
-//	}
 
 }

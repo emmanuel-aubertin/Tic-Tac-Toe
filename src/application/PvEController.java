@@ -52,7 +52,8 @@ public class PvEController {
 	private static boolean canPlay = true;
 	
 	
-	@FXML public void initialize() {
+	@FXML 
+	public void initialize() {
 		System.out.println("|----------------------------|");
 		System.out.println("|-- NEW GAME                 |");
 		System.out.println("|----------------------------|");
@@ -86,7 +87,8 @@ public class PvEController {
 	}
 
 	
-	@FXML public void handlePlay(MouseEvent event) {
+	@FXML 
+	public void handlePlay(MouseEvent event) {
 		System.out.println(canPlay);
 		if(!canPlay || gameResult()) {
 			return;
