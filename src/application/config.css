@@ -1,0 +1,29 @@
+/*
+ * Checkbox
+ */
+ .check-box .box {
+
+	-fx-background-color: white;
+	-fx-border-color:grey;
+	-fx-border-radius:3px;
+    -fx-padding: 3px;
+    -fx-border-insets: 3px;
+    -fx-background-insets: 3px;
+
+}
+
+.check-box:selected .mark {
+
+	-fx-background-color: white;
+
+}
+
+.check-box:selected .box {
+	
+	-fx-background-color: #28a3f4;
+}
+
+
+.button {
+  -fx-background-color: transparent;
+}

@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import style.ButtonStyle;
 
 
 /**
@@ -24,6 +26,7 @@ import javafx.scene.text.Text;
 public class ModelListController {
 	
 	@FXML VBox VBoxFileList;
+	@FXML Button btnDelete;
 	
 	@FXML public void initialize() {
 		File trainFolder = new File("./resources/train/");
@@ -35,7 +38,7 @@ public class ModelListController {
 	            return name.endsWith(".srl");
 	        }
 	    };
-	    
+	    btnDelete.setSkin(new ButtonStyle(btnDelete));
 	    
 	   for(String file : trainFolder.list(filter)) {
 		   System.out.println(file);
