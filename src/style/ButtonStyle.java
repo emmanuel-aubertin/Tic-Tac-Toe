@@ -28,10 +28,13 @@ public class ButtonStyle extends ButtonSkin {
         });
 
         control.setOpacity(1);
-        control.setStyle("-fx-background-color: #E1332D;"
-        				+"-fx-text-fill: #fff;"
+        control.setStyle( "-fx-background-color: #E1332D;"
+        				+ "-fx-text-fill: #fff;"
         				+ "-fx-alignment: center;"
-        				+ "-fx-text-color: #fff;");
+        				+ "-fx-text-color: #fff;"
+        				+ "-fx-padding: 6px;"
+        				+ "-fx-border-insets: 3px;"
+        				+ "-fx-background-insets: 3px;");
 	}
 
 }

@@ -21,6 +21,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import style.ButtonStyle;
 
 /**
  * Controller of Config Vue
@@ -32,6 +33,8 @@ import javafx.scene.text.Text;
 public class ConfigVueController {
 	
 	@FXML private VBox VBoxView;
+	@FXML private Button btnAdd;
+	@FXML private Button btnApply;
 	
 	
 	// Init of the config window with the data of config.txt
@@ -44,6 +47,8 @@ public class ConfigVueController {
 		
 		Pattern regexFloalt = Pattern.compile("[+-]?([0-9]*[.])?[0-9]+");
 		Pattern regexInt = Pattern.compile("[0-9]*");
+		btnAdd.setSkin(new ButtonStyle(btnAdd));
+		btnApply.setSkin(new ButtonStyle(btnApply));
 		
 		for(int i = 0; i < confFromFile.size(); i++)
 		{
@@ -97,6 +102,7 @@ public class ConfigVueController {
 					VBoxView.getChildren().remove(((Node) event.getTarget()).getParent());
 		        }
 			});
+			ereaseBtn.setSkin(new ButtonStyle(ereaseBtn));
 			confLine.getChildren().add(ereaseBtn);
 			
 			VBoxView.getChildren().add(confLine);
