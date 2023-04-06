@@ -7,7 +7,7 @@ Button, ComboBox{
 
 .background {
 	-fx-background-color: #9E2B25;
-}
+}	
 
 .gridPane {
 	-fx-border-color: #fff;
@@ -22,3 +22,21 @@ Button, ComboBox{
   -fx-control-inner-background: #E1332D;
 }
 
+
+
+.combo-box {
+	-fx-background-color: #E1332D;
+}
+
+.combo-box-popup .list-view {
+	-fx-background-color: #E1332D;
+}
+
+.combo-box-popup .list-cell {
+	-fx-background-color: #fff;
+}	
+
+
+.combo-box-popup .list-cell:filled:hover {
+	-fx-background-color: #E1332D;
+}

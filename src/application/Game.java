@@ -65,6 +65,33 @@ public class Game {
 		return 0;
 	}
 	
+	public int[] getWinPos() {
+		for(int i = 0; i < 3; i++)
+		{
+			// Check line
+			System.out.println("Checking line : " + i*3 + " | " + (i*3+1) + " | " + (i*3+2) + " => " + game[i*3] + " | " + game[(i*3+1)] + " | " + game[(i*3+2)]);
+			if(game[i*3] != 0.0 && game[i*3] == game[i*3+1] && game[i*3+2] == game[i*3]) {
+				int[] output = new int[]{i*3, i*3+1, i*3+2};
+				return output;
+			}
+			// Check Column
+			if(game[i] != 0.0 && game[i] == game[i+3] && game[i+6] == game[i+3]) {
+				int[] output = new int[]{i, i+3, i+6};
+				return output;
+			}
+		}
+		// First diag
+		if(game[0] != 0.0 && game[0] == game[4] && game[4] == game[8]) {
+			int[] output = new int[]{0, 4, 8};
+			return output;
+		}
+		// Second diag
+		if(game[2] != 0.0 && game[2] == game[4] && game[4] == game[6]) {
+			int[] output = new int[]{2, 4, 6};
+			return output;
+		}
+		return null;
+	}
 	
 	/**
 	 * Play on the grid

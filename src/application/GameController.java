@@ -1,7 +1,12 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
+import javafx.animation.FillTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +14,9 @@ import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -47,6 +54,8 @@ public class GameController {
 	@FXML 
 	private Text playersSwitch;
 	
+	private LinkedList<FillTransition> transitionList = new LinkedList<FillTransition>();
+	
 	@FXML
 	GridPane gridPane;
 	
@@ -59,6 +68,8 @@ public class GameController {
 	        game.add("");
 	    }
 	}
+	
+	private Game gameLogic = new Game();
 	
 	private static final String X = "X";
 	private static final String O = "O";
@@ -89,6 +100,7 @@ public class GameController {
 	    playerX = true;
 	    playersSwitch.setText("Player : X");
 	    btnNewGame.setVisible(false);
+	    gameLogic =  new Game();
 	}
 	
 	@FXML 
@@ -107,10 +119,12 @@ public class GameController {
 	        textPlayed.setText(X);
 	        game.set(posPlayed, X);
 	        playersSwitch.setText("Player : O");
+	        gameLogic.play(posPlayed, -1);
 	    } else {
 	        textPlayed.setText(O);
 	        game.set(posPlayed, O);
 	        playersSwitch.setText("Player : X");
+	        gameLogic.play(posPlayed, 1);
 	    }
 		 playerX = !playerX;
 		 
@@ -125,6 +139,26 @@ public class GameController {
 		        btnNewGame.setVisible(true);
 		        gridPane.setDisable(true);
 		    }
+		    System.out.println("GameLogique");
+		    System.out.println(gameLogic);
+		    int[] posWin = gameLogic.getWinPos();
+		    if(posWin != null) {
+		        Duration duration = Duration.seconds(2);
+		        Color startColor = Color.WHITE;
+		        Color endColor = Color.GREEN;
+		        int cycleCount = FillTransition.INDEFINITE;
+			    for(int e : posWin) {
+			    	System.out.println("pos : " + e);
+			    	Text winner_field = (Text) ((Pane) gridPane.getChildren().get(e)).getChildren().get(0);
+			    	//winner_field.
+
+			        FillTransition fillTransition = new FillTransition(duration, winner_field, startColor, endColor);
+			        fillTransition.setCycleCount(cycleCount);
+			        fillTransition.setAutoReverse(true);
+			        fillTransition.play();
+			    }
+		    }
+
 		}
 
 	}
