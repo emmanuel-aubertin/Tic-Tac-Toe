@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javafx.animation.FillTransition;
 import javafx.animation.KeyFrame;
@@ -30,6 +31,7 @@ import javafx.scene.image.ImageView;
 public class GameController {
 	private static final int ROWS = 3;
     private static final int COLUMNS = 3;
+    
 	
 	@FXML private Pane pane0;
 	@FXML private Text sign0;
@@ -54,7 +56,7 @@ public class GameController {
 	@FXML 
 	private Text playersSwitch;
 	
-	private LinkedList<FillTransition> transitionList = new LinkedList<FillTransition>();
+	List<FillTransition> transitionList = new ArrayList<>();
 	
 	@FXML
 	GridPane gridPane;
@@ -93,6 +95,14 @@ public class GameController {
 	            node.setDisable(false);
 	        }
 	    }
+	    
+	    for (FillTransition transition : transitionList) {
+	        transition.stop();
+	        Text text = (Text) transition.getShape();
+	        text.setFill(Color.WHITE);
+	    }
+	    transitionList.clear();
+	    
 	    // Сбросить игру
 	    game.clear();
 	    for (int i = 0; i < ROWS * COLUMNS; i++) {
@@ -103,6 +113,8 @@ public class GameController {
 	    playersSwitch.setText("Player : X");
 	    btnNewGame.setVisible(false);
 	    gameLogic =  new Game();
+	    
+
 	}
 	
 	@FXML 
@@ -155,6 +167,7 @@ public class GameController {
 			        fillTransition.setCycleCount(cycleCount);
 			        fillTransition.setAutoReverse(true);
 			        fillTransition.play();
+			        transitionList.add(fillTransition);
 			    }
 		    }
 
