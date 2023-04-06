@@ -1,15 +1,13 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 import java.util.List;
 
 import javafx.animation.FillTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
+
 import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.*;
@@ -20,8 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
 
 /**
@@ -123,7 +120,12 @@ public class GameController {
 	    
 
 	}
-	
+	/**
+	 * The method is triggered when a user clicks on a cell in the game grid. 
+	 * It updates the game state, checks for a winner, and adds animations for winning symbols.
+	 * 
+	 * @author Svitlana Temkaieva (lanebx), Aubertin Emmanuel (aka aTHO_)
+	 */
 	@FXML 
 	public void handlePlay(MouseEvent event) {
 		System.out.println("Get pane clicked");
@@ -144,16 +146,17 @@ public class GameController {
 	        playersSwitch.setText("Player : X");
 	        gameLogic.play(posPlayed, 1);
 	    }
-		 playerX = !playerX;
-		 
+		
+		playerX = !playerX;
+
 		String winner = checkWin();
 		if (winner != null) {
 		    if (winner.equals(X) || winner.equals(O)) {
-		    	playersSwitch.setText(winner + " wins!");
+		        playersSwitch.setText(winner + " wins!");
 		        btnNewGame.setVisible(true);
 		        gridPane.setDisable(true);
-		    } else if (game.stream().noneMatch(String::isEmpty)) {
-		    	System.out.println("Нету ходов");
+		    } else if (winner.equals("Tie")) {
+		        playersSwitch.setText("It's a tie!");
 		        btnNewGame.setVisible(true);
 		        gridPane.setDisable(true);
 		    }
@@ -194,6 +197,10 @@ public class GameController {
 
 	}
 	
+	/**
+	 * If a player has won, the method returns the player's symbol.
+	 * If there is no winner, the method returns null.
+	 */
 	private String checkWin() {
 	    // Проверяем горизонтали
 	    for (int row = 0; row < ROWS; row++) {
@@ -218,8 +225,14 @@ public class GameController {
 	    if (game.get(2).equals(game.get(4)) && game.get(2).equals(game.get(6))) {
 	        return game.get(2);
 	    }
+	    
+	    
+	    if (game.stream().anyMatch(String::isEmpty)) {
+	        return null;
+	    } else {
+	        return "Tie";
+	    }
 
-	    return null;
 	}
 
 }
