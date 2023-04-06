@@ -150,6 +150,7 @@ public class GameController {
 		playerX = !playerX;
 
 		String winner = checkWin();
+		
 		if (winner != null) {
 		    if (winner.equals(X) || winner.equals(O)) {
 		        playersSwitch.setText(winner + " wins!");
@@ -203,26 +204,29 @@ public class GameController {
 	 */
 	private String checkWin() {
 	    // Проверяем горизонтали
-	    for (int row = 0; row < ROWS; row++) {
-	        int start = row * COLUMNS;
-	        if (game.get(start).equals(game.get(start + 1)) && game.get(start).equals(game.get(start + 2))) {
-	            return game.get(start);
+		for (int row = 0; row < ROWS; row++) {
+			int start = row * COLUMNS;
+			if (game.get(start).equals(game.get(start + 1)) && game.get(start).equals(game.get(start + 2)) && !game.get(start).isEmpty()) {
+			return game.get(start);
 	        }
 	    }
 
 	    // Проверяем вертикали
 	    for (int col = 0; col < COLUMNS; col++) {
 	        if (game.get(col).equals(game.get(col + COLUMNS)) && game.get(col).equals(game.get(col + COLUMNS * 2))) {
+	        	System.out.println("winner 2" + col);
 	            return game.get(col);
 	        }
 	    }
 
 	    // Проверяем диагонали
 	    if (game.get(0).equals(game.get(4)) && game.get(0).equals(game.get(8))) {
+	    	System.out.println("winner 3" + game.get(0));
 	        return game.get(0);
 	    }
 	    
 	    if (game.get(2).equals(game.get(4)) && game.get(2).equals(game.get(6))) {
+	    	System.out.println("winner 4" + game.get(2));
 	        return game.get(2);
 	    }
 	    
