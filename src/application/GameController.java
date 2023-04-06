@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.animation.FillTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -57,6 +58,7 @@ public class GameController {
 	private Text playersSwitch;
 	
 	List<FillTransition> transitionList = new ArrayList<>();
+	List<ScaleTransition> scaleTransitionList = new ArrayList<>();
 	
 	@FXML
 	GridPane gridPane;
@@ -102,6 +104,11 @@ public class GameController {
 	        text.setFill(Color.WHITE);
 	    }
 	    transitionList.clear();
+	    
+	    for (ScaleTransition transition : scaleTransitionList) {
+	        transition.stop();
+	    }
+	    scaleTransitionList.clear();
 	    
 	    // Сбросить игру
 	    game.clear();
@@ -158,6 +165,7 @@ public class GameController {
 		        Color startColor = Color.WHITE;
 		        Color endColor = Color.GREEN;
 		        int cycleCount = FillTransition.INDEFINITE;
+		        
 			    for(int e : posWin) {
 			    	System.out.println("pos : " + e);
 			    	Text winner_field = (Text) ((Pane) gridPane.getChildren().get(e)).getChildren().get(0);
@@ -168,6 +176,17 @@ public class GameController {
 			        fillTransition.setAutoReverse(true);
 			        fillTransition.play();
 			        transitionList.add(fillTransition);
+			        
+			        
+			        ScaleTransition scaleTransition = new ScaleTransition(duration, winner_field);
+			        scaleTransition.setFromX(1);
+			        scaleTransition.setFromY(1);
+			        scaleTransition.setToX(1.2);
+			        scaleTransition.setToY(1.2);
+			        scaleTransition.setCycleCount(cycleCount);
+			        scaleTransition.setAutoReverse(true);
+			        scaleTransition.play();
+			        scaleTransitionList.add(scaleTransition);
 			    }
 		    }
 
