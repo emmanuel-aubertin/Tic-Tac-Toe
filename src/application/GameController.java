@@ -90,6 +90,7 @@ public class GameController {
 	        if (node instanceof Pane) {
 	            ((Text) ((Pane) node).getChildren().get(0)).setText("");
 	            ((Text) ((Pane) node).getChildren().get(0)).setDisable(false);
+	            node.setDisable(false);
 	        }
 	    }
 	    // Сбросить игру
@@ -97,6 +98,7 @@ public class GameController {
 	    for (int i = 0; i < ROWS * COLUMNS; i++) {
 	        game.add("");
 	    }
+
 	    playerX = true;
 	    playersSwitch.setText("Player : X");
 	    btnNewGame.setVisible(false);
@@ -106,14 +108,11 @@ public class GameController {
 	@FXML 
 	public void handlePlay(MouseEvent event) {
 		System.out.println("Get pane clicked");
-//		Image imageO = new Image("./resources/images/TicTacToe/circle.png");
-//		Image imageX = new Image("./resources/images/TicTacToe/cross.png");
-		
-//		signImg0.setImage(imageO);
 		
 		Pane clickedPane = (Pane) event.getSource();
 		Text textPlayed = (Text) clickedPane.getChildren().get(0);
 	    int posPlayed = Integer.parseInt(clickedPane.getId().substring(4));
+	    clickedPane.setDisable(true);
 		
 		if (playerX) {
 	        textPlayed.setText(X);
@@ -183,6 +182,7 @@ public class GameController {
 	    if (game.get(0).equals(game.get(4)) && game.get(0).equals(game.get(8))) {
 	        return game.get(0);
 	    }
+	    
 	    if (game.get(2).equals(game.get(4)) && game.get(2).equals(game.get(6))) {
 	        return game.get(2);
 	    }
