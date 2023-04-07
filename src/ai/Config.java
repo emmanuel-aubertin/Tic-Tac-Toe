@@ -13,7 +13,8 @@ public class Config {
 	@Override
 	public String toString() {
 		return "Config [level=" + level + ", hiddenLayerSize=" + hiddenLayerSize + ", numberOfhiddenLayers="
-				+ numberOfhiddenLayers + ", learningRate=" + learningRate + "]";
+				+ numberOfhiddenLayers + ", learningRate=" + learningRate + 
+				"]";
 	}
 
 	//FIELDS ...
