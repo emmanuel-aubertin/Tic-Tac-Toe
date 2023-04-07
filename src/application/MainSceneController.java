@@ -52,6 +52,7 @@ public class MainSceneController {
 		difficultySelector.getItems().addAll(options);
 		btnPvE.setSkin(new ButtonStyle(btnPvE));
 		btnPvP.setSkin(new ButtonStyle(btnPvP));
+		difficultySelector.getSelectionModel().selectFirst();
 	}
 	
 	/**

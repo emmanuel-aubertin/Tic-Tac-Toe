@@ -16,7 +16,6 @@ public class Main extends Application {
 
 			Parent parent = FXMLLoader.load(getClass().getResource("mainScene.fxml"));
 
-			
 			Scene MainScene = new Scene(parent);		
 			primaryStage.setScene(MainScene);
 			primaryStage.setTitle("Хрестики_нулики");
