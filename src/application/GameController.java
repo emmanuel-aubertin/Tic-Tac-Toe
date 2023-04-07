@@ -153,6 +153,7 @@ public class GameController {
 		
 		if (winner != null) {
 		    if (winner.equals(X) || winner.equals(O)) {
+		    	System.out.println(winner + " wins!");
 		        playersSwitch.setText(winner + " wins!");
 		        btnNewGame.setVisible(true);
 		        gridPane.setDisable(true);
@@ -203,6 +204,14 @@ public class GameController {
 	 * If there is no winner, the method returns null.
 	 */
 	private String checkWin() {
+		 // Check verticals
+        for (int col = 0; col < COLUMNS; col++) {
+            if (!game.get(col).isEmpty() &&
+                game.get(col).equals(game.get(col + ROWS)) &&
+                game.get(col).equals(game.get(col + ROWS * 2))) {
+                return game.get(col);
+            }
+        }
 	    // Проверяем горизонтали
 		for (int row = 0; row < ROWS; row++) {
 			int start = row * COLUMNS;
@@ -230,7 +239,7 @@ public class GameController {
 	        return game.get(2);
 	    }
 	    
-	    
+
 	    if (game.stream().anyMatch(String::isEmpty)) {
 	        return null;
 	    } else {
