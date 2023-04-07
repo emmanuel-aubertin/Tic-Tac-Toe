@@ -1,7 +1,3 @@
-/**
- * @author manu
- *
- */
 module Хрестики_нулики {
 	requires javafx.controls;
 	requires javafx.fxml;

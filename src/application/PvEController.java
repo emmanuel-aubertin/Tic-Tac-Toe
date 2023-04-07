@@ -152,7 +152,7 @@ public class PvEController {
 		    	System.out.println("pos : " + e);
 		    	Text winner_field = (Text) ((Pane) gridPane.getChildren().get(e)).getChildren().get(0);
 		    	//winner_field.
-
+		    	System.out.println("\twinner_field : " + winner_field.getText());
 		        FillTransition fillTransition = new FillTransition(duration, winner_field, startColor, endColor);
 		        fillTransition.setCycleCount(cycleCount);
 		        fillTransition.setAutoReverse(true);
