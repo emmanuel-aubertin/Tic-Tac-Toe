@@ -2,10 +2,13 @@ package application;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ai.ConfigFileLoader;
 import ai.MultiLayerPerceptron;
+import javafx.animation.FillTransition;
 import javafx.animation.KeyFrame;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -15,7 +18,9 @@ import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import ai.Config;
@@ -46,9 +51,16 @@ public class PvEController {
 	private Game game;
 	private MultiLayerPerceptron iaNet;
 	private String level;
-	private static String playerSign = "⚔️";
+	private static String playerSign = "X️";
 	private static String iaSign = "O";
 	private static boolean canPlay = true;
+	@FXML 
+	private Text playersSwitch;
+	@FXML
+	GridPane gridPane;
+	
+	List<FillTransition> transitionList = new ArrayList<>();
+	List<ScaleTransition> scaleTransitionList = new ArrayList<>();
 	
 	
 	@FXML 
@@ -74,20 +86,55 @@ public class PvEController {
 		System.out.println("RESUTL ===> " + resultGame);
 		if(resultGame == -1) 
 		{
-			System.out.println("Human win");
+			playersSwitch.setText("Human wins!");
+			 startWinTransition();
 			return true;
 		} 
 		if(resultGame == 1)
 		{
-			System.out.println("IA win");
+			playersSwitch.setText("IA wins!");
+			 startWinTransition();
 			return true;
 		}
 		return false;
 	}
 
+	private void startWinTransition() {
+		int[] posWin = game.getWinPos();
+	    if(posWin != null) {
+	        Duration duration = Duration.seconds(2);
+	        Color startColor = Color.WHITE;
+	        Color endColor = Color.GREEN;
+	        int cycleCount = FillTransition.INDEFINITE;
+	        
+		    for(int e : posWin) {
+		    	System.out.println("pos : " + e);
+		    	Text winner_field = (Text) ((Pane) gridPane.getChildren().get(e)).getChildren().get(0);
+		    	//winner_field.
+
+		        FillTransition fillTransition = new FillTransition(duration, winner_field, startColor, endColor);
+		        fillTransition.setCycleCount(cycleCount);
+		        fillTransition.setAutoReverse(true);
+		        fillTransition.play();
+		        transitionList.add(fillTransition);
+		        
+		        
+		        ScaleTransition scaleTransition = new ScaleTransition(duration, winner_field);
+		        scaleTransition.setFromX(1);
+		        scaleTransition.setFromY(1);
+		        scaleTransition.setToX(1.2);
+		        scaleTransition.setToY(1.2);
+		        scaleTransition.setCycleCount(cycleCount);
+		        scaleTransition.setAutoReverse(true);
+		        scaleTransition.play();
+		        scaleTransitionList.add(scaleTransition);
+		    }
+	    }
+	}
 	
 	@FXML 
 	public void handlePlay(MouseEvent event) {
+		playersSwitch.setText("Player : O");
 		System.out.println(canPlay);
 		if(!canPlay || gameResult()) {
 			return;
@@ -113,7 +160,7 @@ public class PvEController {
 			return;
 		}
 		
-
+		
 		playIA();
 		
 		if(gameResult()) {
@@ -135,7 +182,7 @@ public class PvEController {
 	}
 	
 	private void playIA() {
-
+		
 		double[] gameBoard = game.getGame();
 		double[] newGame = iaNet.forwardPropagation(gameBoard);
 		for(int i = 0; i < 3; i++) {
@@ -151,10 +198,15 @@ public class PvEController {
 			}
 		}
 		game.play(posPlayed, 1);
+		canPlay = false;
 		Text sign = (Text) parent.lookup("#sign" + posPlayed);
 		Timeline timeline  = new Timeline();
-		Duration delayBetweenMessages = Duration.millis(200);
+		Duration delayBetweenMessages = Duration.millis(350);
 		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> sign.setText(iaSign)));
+		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> {
+		    playersSwitch.setText("Player: X");
+		    canPlay = true;
+		}));
 		timeline.play();
-	}
+		}
 }
