@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.*;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -58,7 +59,8 @@ public class PvEController {
 	private Text playersSwitch;
 	@FXML
 	GridPane gridPane;
-	
+	@FXML
+	Button btnNewGame;
 	List<FillTransition> transitionList = new ArrayList<>();
 	List<ScaleTransition> scaleTransitionList = new ArrayList<>();
 	
@@ -99,7 +101,46 @@ public class PvEController {
 		return false;
 	}
 
+	/**
+	 * When the game is over, clicking on this button allows you to start a new game.
+	 * The field with the players' moves is cleared, the result is reset
+	 * 
+	 * @author Svitlana Temkaieva (lanebx)
+	 */
+	@FXML 
+	public void handleNewGame(ActionEvent event) {
+		gridPane.setDisable(false);
+	    // Очистить все поля Text внутри Pane
+		// Clear all Text fields inside the Pane
+	    for (Node node : gridPane.getChildren()) {
+	        if (node instanceof Pane) {
+	            ((Text) ((Pane) node).getChildren().get(0)).setText("");
+	            ((Text) ((Pane) node).getChildren().get(0)).setDisable(false);
+	            node.setDisable(false);
+	        }
+	    }
+	    
+	    for (FillTransition transition : transitionList) {
+	        transition.stop();
+	        Text text = (Text) transition.getShape();
+	        text.setFill(Color.WHITE);
+	    }
+	    transitionList.clear();
+	    
+	    for (ScaleTransition transition : scaleTransitionList) {
+	        transition.stop();
+	    }
+	    scaleTransitionList.clear();
+	    
+	    playersSwitch.setText("Player : X");
+	    btnNewGame.setVisible(false);
+	    game =  new Game();
+	    
+
+	}
+	
 	private void startWinTransition() {
+		btnNewGame.setVisible(true);
 		int[] posWin = game.getWinPos();
 	    if(posWin != null) {
 	        Duration duration = Duration.seconds(2);

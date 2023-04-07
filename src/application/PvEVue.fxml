@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -13,7 +14,7 @@
 
 <AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PvEController">
    <children>
-   <Text fx:id="playersSwitch" fill="#F5F8DE" layoutX="240.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteText" text="Player : 1" textAlignment="CENTER" wrappingWidth="120.8564453125">
+   <Text fx:id="playersSwitch" fill="#F5F8DE" layoutX="240.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteText" text="Player : X" textAlignment="CENTER" wrappingWidth="120.8564453125">
          <font>
             <Font size="18.0" />
          </font>
@@ -104,5 +105,6 @@
             </Pane>
          </children>
       </GridPane>
+      <Button fx:id="btnNewGame" layoutX="266.0" layoutY="343.0" mnemonicParsing="false" stylesheets="@application.css" text="New game" onAction="#handleNewGame" textAlignment="CENTER" visible="false"/>
    </children>
 </AnchorPane>
