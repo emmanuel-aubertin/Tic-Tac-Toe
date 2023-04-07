@@ -245,8 +245,11 @@ public class PvEController {
 		Duration delayBetweenMessages = Duration.millis(350);
 		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> sign.setText(iaSign)));
 		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> {
-		    playersSwitch.setText("Player: X");
-		    canPlay = true;
+		    if(gameResult()) {
+		    	return;
+		    }
+    		playersSwitch.setText("Player: X");
+    		canPlay = true;
 		}));
 		timeline.play();
 		}
