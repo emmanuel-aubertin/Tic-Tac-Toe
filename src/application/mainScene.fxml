@@ -9,7 +9,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane styleClass="background" stylesheets="@application.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
+<AnchorPane styleClass="background" stylesheets="@application.css" prefHeight="269.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
     <children>
        <MenuBar prefHeight="28.0" prefWidth="612.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <menus>
@@ -21,29 +21,30 @@
            </Menu>
          </menus>
        </MenuBar>
-   	<VBox alignment="CENTER" layoutX="251.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity">
-   		<children>
-   			<Button fx:id="btnPvP" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchP2P" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play P2P" textAlignment="CENTER">
-	          <StackPane.margin>
-	             <Insets bottom="35.0" />
-	          </StackPane.margin>
-	       	</Button>
-	        <Button fx:id="btnPvE" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchIA" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css" text="Play againts IA" textAlignment="CENTER">
-	          <StackPane.margin>
-	             <Insets bottom="35.0" />
-	          </StackPane.margin>
-	       	</Button>
-	       	
-            <ComboBox fx:id="difficultySelector" prefHeight="27.0" prefWidth="111.0" stylesheets="@application.css">
-              <StackPane.margin>
-                 <Insets top="35.0" />
-              </StackPane.margin>
-              
-              <VBox.margin>
-                 <Insets top="5.0" />
-              </VBox.margin>
-           </ComboBox>
-       </children>
-      </VBox>
+       
+	   	<StackPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+	   		<VBox alignment="CENTER">
+	   			<Button fx:id="btnPvP" alignment="CENTER" maxWidth="150" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchP2P" prefHeight="35" prefWidth="111.0" stylesheets="@application.css" text="Play P2P" textAlignment="CENTER">
+		          <StackPane.margin>
+		             <Insets bottom="35.0" />
+		          </StackPane.margin>
+		       	</Button>
+		        <Button fx:id="btnPvE" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLaunchIA" prefHeight="35" prefWidth="150" maxWidth="150" stylesheets="@application.css" text="Play against IA" textAlignment="CENTER">
+		          <StackPane.margin>
+		             <Insets bottom="35.0" />
+		          </StackPane.margin>
+		       	</Button>
+		       	
+	            <ComboBox fx:id="difficultySelector" prefHeight="35" prefWidth="145" maxWidth="145" stylesheets="@application.css" styleClass="my-combo-box">
+	              <StackPane.margin>
+	                 <Insets top="35.0" />
+	              </StackPane.margin>
+	              
+	              <VBox.margin>
+	                 <Insets top="5.0" />
+	              </VBox.margin>
+	           </ComboBox>
+	       </VBox>
+	   	</StackPane>
     </children>
  </AnchorPane>

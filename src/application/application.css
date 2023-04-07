@@ -1,14 +1,14 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 Button, ComboBox{
-    -fx-alignment: center ;
-    -fx-padding: 5 ;
+    -fx-alignment: center;
+    -fx-padding: 5;
 	-fx-background-color: #E1332D;
-	-fx-text-fill:  #fff;
+	-fx-text-fill:  #6d5bd7;
 }
 
 .background {
-	-fx-background-color: #9E2B25;
+	-fx-background-color: #c2b7fd;
 }	
 
 .gridPane {
@@ -24,21 +24,29 @@ Button, ComboBox{
   -fx-control-inner-background: #E1332D;
 }
 
-
-
 .combo-box {
-	-fx-background-color: #E1332D;
+	-fx-background-color: #fcfbff;
+	-fx-text-fill: #6d5bd7;
 }
 
 .combo-box-popup .list-view {
-	-fx-background-color: #E1332D;
+	-fx-background-color: #fcfbff;
 }
 
 .combo-box-popup .list-cell {
-	-fx-background-color: #fff;
+	-fx-background-color: #fcfbff;
+	-fx-text-fill: #6d5bd7;
 }	
 
-
 .combo-box-popup .list-cell:filled:hover {
-	-fx-background-color: #E1332D;
+	-fx-background-color: #6d5bd7;
+	-fx-text-fill: #fcfbff;
+}
+
+.combo-box .button .text {
+    -fx-text-fill: #6d5bd7 !important;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #6d5bd7;
 }
