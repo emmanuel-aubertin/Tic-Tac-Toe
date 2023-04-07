@@ -98,6 +98,11 @@ public class PvEController {
 			 startWinTransition();
 			return true;
 		}
+		if(resultGame == 2) {
+			playersSwitch.setText("It's a tie!");
+	        btnNewGame.setVisible(true);
+	        return true;
+		}
 		return false;
 	}
 
@@ -109,7 +114,6 @@ public class PvEController {
 	 */
 	@FXML 
 	public void handleNewGame(ActionEvent event) {
-		gridPane.setDisable(false);
 	    // Очистить все поля Text внутри Pane
 		// Clear all Text fields inside the Pane
 	    for (Node node : gridPane.getChildren()) {
@@ -135,8 +139,7 @@ public class PvEController {
 	    playersSwitch.setText("Player : X");
 	    btnNewGame.setVisible(false);
 	    game =  new Game();
-	    
-
+	    canPlay = true;
 	}
 	
 	private void startWinTransition() {

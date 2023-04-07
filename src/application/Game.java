@@ -42,6 +42,7 @@ public class Game {
 	 * @return No winner => 0 | Winner sign
 	 */
 	public double checkIfWin() {
+
 		for(int i = 0; i < 3; i++)
 		{
 			// Check line
@@ -61,6 +62,9 @@ public class Game {
 		// Second diag
 		if(game[2] != 0.0 && game[2] == game[4] && game[4] == game[6]) {
 			return getSign(2);
+		}
+		if(isFull()) {
+			return 2;
 		}
 		return 0;
 	}
@@ -105,6 +109,15 @@ public class Game {
 			return false;
 		}
 		game[pos] = sign;
+		return true;
+	}
+	
+	public boolean isFull() {
+		for(int i=0; i < 9; i++) {
+			if(game[i] == 0) {
+				return false;
+			}
+		}
 		return true;
 	}
 }
