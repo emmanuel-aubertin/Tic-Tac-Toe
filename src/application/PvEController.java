@@ -1,6 +1,7 @@
 package application;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -31,29 +34,29 @@ public class PvEController {
 	@FXML private AnchorPane parent;
 	
 	@FXML private Pane pane0;
-	@FXML private Text sign0;
+	@FXML private ImageView sign0;
 	@FXML private Pane pane1;
-	@FXML private Text sign1;
+	@FXML private ImageView sign1;
 	@FXML private Pane pane2;
-	@FXML private Text sign2;
+	@FXML private ImageView sign2;
 	@FXML private Pane pane3;
-	@FXML private Text sign3;
+	@FXML private ImageView sign3;
 	@FXML private Pane pane4;
-	@FXML private Text sign4;
+	@FXML private ImageView sign4;
 	@FXML private Pane pane5;
-	@FXML private Text sign5;
+	@FXML private ImageView sign5;
 	@FXML private Pane pane6;
-	@FXML private Text sign6;
+	@FXML private ImageView sign6;
 	@FXML private Pane pane7;
-	@FXML private Text sign7;
+	@FXML private ImageView sign7;
 	@FXML private Pane pane8;
-	@FXML private Text sign8;
+	@FXML private ImageView sign8;
 	
 	private Game game;
 	private MultiLayerPerceptron iaNet;
 	private String level;
-	private static String playerSign = "X️";
-	private static String iaSign = "O";
+	private static String playerSign = "file:src/style/x.png";
+	private static String iaSign = "file:src/style/Opiece.png";
 	private static boolean canPlay = true;
 	@FXML 
 	private Text playersSwitch;
@@ -153,14 +156,9 @@ public class PvEController {
 	        
 		    for(int e : posWin) {
 		    	System.out.println("pos : " + e);
-		    	Text winner_field = (Text) ((Pane) gridPane.getChildren().get(e)).getChildren().get(0);
+		    	ImageView winner_field = (ImageView) ((Pane) gridPane.getChildren().get(e)).getChildren().get(0);
 		    	//winner_field.
-		    	System.out.println("\twinner_field : " + winner_field.getText());
-		        FillTransition fillTransition = new FillTransition(duration, winner_field, startColor, endColor);
-		        fillTransition.setCycleCount(cycleCount);
-		        fillTransition.setAutoReverse(true);
-		        fillTransition.play();
-		        transitionList.add(fillTransition);
+
 		        
 		        
 		        ScaleTransition scaleTransition = new ScaleTransition(duration, winner_field);
@@ -184,20 +182,21 @@ public class PvEController {
 			return;
 		}
 		System.out.println("Get pane clicked");
-		Text textPlayed;
+		ImageView imgPlayed;
 		if(event.getTarget() instanceof Pane) {
-			textPlayed = (Text)((Pane) event.getTarget()).getChildren().get(0);
+			imgPlayed = (ImageView)((Pane) event.getTarget()).getChildren().get(0);
 		} else {
-			textPlayed = ((Text) event.getTarget());
+			imgPlayed = ((ImageView) event.getTarget());
 		}
 		
-		int posPlayed = Character.getNumericValue( textPlayed.getId().charAt(textPlayed.getId().length() - 1));
+		int posPlayed = Character.getNumericValue( imgPlayed.getId().charAt(imgPlayed.getId().length() - 1));
 		if(!game.play(posPlayed, -1))
 		{
 			return;
 		}
 		System.out.print(game);
-		textPlayed.setText(playerSign);
+		imgPlayed.setImage(new Image(playerSign));
+		//textPlayed.setText(playerSign);
 		
 		// if someone win
 		if(gameResult()) {
@@ -243,10 +242,10 @@ public class PvEController {
 		}
 		game.play(posPlayed, 1);
 		canPlay = false;
-		Text sign = (Text) parent.lookup("#sign" + posPlayed);
+		ImageView imgPlayed = (ImageView) parent.lookup("#sign" + posPlayed);
 		Timeline timeline  = new Timeline();
 		Duration delayBetweenMessages = Duration.millis(350);
-		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> sign.setText(iaSign)));
+		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> imgPlayed.setImage(new Image(iaSign))));
 		timeline.getKeyFrames().add(new KeyFrame(delayBetweenMessages, e -> {
 		    if(gameResult()) {
 		    	return;
