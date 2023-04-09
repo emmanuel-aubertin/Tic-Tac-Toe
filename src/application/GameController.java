@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.scene.control.Button;
@@ -72,6 +73,9 @@ public class GameController {
 	private static final String X = "X";
 	private static final String O = "O";
 	private boolean playerX = true;
+	
+	private static String FONT_PATH = "file:resources/DeliciousHandrawn-Regular.ttf";
+    private static final Font CUSTOM_FONT = Font.loadFont(GameController.class.getResourceAsStream(FONT_PATH), 24);
 
 	
 	/**
@@ -83,6 +87,7 @@ public class GameController {
 	@FXML 
 	public void handleNewGame(ActionEvent event) {
 		gridPane.setDisable(false);
+		playersSwitch.setFont(CUSTOM_FONT);
 		
 	    // Очистить все поля Text внутри Pane
 		for (Node node : pane0.getParent().getChildrenUnmodifiable()) {
