@@ -7,6 +7,21 @@ Button, ComboBox{
 	-fx-text-fill:  #fff;
 }
 
+.mainText {
+	-fx-font: 25px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, #FBEE6F, #CF3C05 0%, #FBEE6F 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+
+.name-game {
+	-fx-font: 25px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, #6C3B18, #6C3B18 0%, #fff 50%);
+    -fx-stroke: #6C3B18;
+    -fx-stroke-width: 1;
+}
+
+
 .background {
 	-fx-background-color: #dbd7d3;
 }	
@@ -26,11 +41,6 @@ Button, ComboBox{
 }
 
 .combo-box {
-	-fx-background-color: #fcfbff;
-	-fx-text-fill: #6d5bd7;
-}
-
-.combo-box-popup .list-view {
 	-fx-background-color: #fcfbff;
 }
 

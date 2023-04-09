@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.animation.FillTransition;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.ScaleTransition;
-
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.*;
@@ -15,12 +16,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.CycleMethod;
+
 
 /**
  * Controller of the game P2P vue
@@ -73,9 +77,6 @@ public class GameController {
 	private static final String X = "X";
 	private static final String O = "O";
 	private boolean playerX = true;
-	
-	private static String FONT_PATH = "file:resources/DeliciousHandrawn-Regular.ttf";
-    private static final Font CUSTOM_FONT = Font.loadFont(GameController.class.getResourceAsStream(FONT_PATH), 24);
 
 	
 	/**
@@ -87,7 +88,6 @@ public class GameController {
 	@FXML 
 	public void handleNewGame(ActionEvent event) {
 		gridPane.setDisable(false);
-		playersSwitch.setFont(CUSTOM_FONT);
 		
 	    // Очистить все поля Text внутри Pane
 		for (Node node : pane0.getParent().getChildrenUnmodifiable()) {
@@ -123,14 +123,24 @@ public class GameController {
 	}
 	
 	
-	@FXML 
-	public void testClick() {
-		System.out.println("testClickIMG");
-	}
-	
-	@FXML 
-	public void testClick2() {
-		System.out.println("testClickPane");
+	private void applyTextTransition(Text text) {
+	    LinearGradient startColor = new LinearGradient(0, 0, 1, 2, true, CycleMethod.NO_CYCLE,
+	            new Stop(0, Color.web("#FBEE6F")),
+	            new Stop(1, Color.web("#CF3C05")),
+	            new Stop(0.5, Color.web("#FBEE6F")));
+
+	    LinearGradient endColor = new LinearGradient(0, 0, 1, 2, true, CycleMethod.NO_CYCLE,
+	            new Stop(0, Color.web("#CF3C05")),
+	            new Stop(1, Color.web("#FBEE6F")),
+	            new Stop(0.5, Color.web("#CF3C05")));
+
+	    KeyValue keyValue = new KeyValue(text.fillProperty(), endColor);
+	    KeyFrame keyFrame = new KeyFrame(Duration.millis(2000), keyValue);
+	    Timeline timeline = new Timeline(keyFrame);
+
+	    timeline.setAutoReverse(true);
+	    timeline.setCycleCount(Timeline.INDEFINITE);
+	    timeline.play();
 	}
 	
 	/**
@@ -183,6 +193,8 @@ public class GameController {
 			
 		    System.out.println("GameLogique");
 		    System.out.println(gameLogic);
+		    applyTextTransition(playersSwitch);
+		    
 		    int[] posWin = gameLogic.getWinPos();
 		    if(posWin != null) {
 		        Duration duration = Duration.seconds(2);

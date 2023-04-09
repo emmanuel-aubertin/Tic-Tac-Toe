@@ -8,83 +8,88 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="600.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
-      <Text fx:id="playersSwitch" fill="#3d2310" layoutX="253.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteText" text="Player : X" wrappingWidth="108.5">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
+      <StackPane layoutY="9.0" prefHeight="68.0" prefWidth="600.0">
+         <children>
+            <Text fx:id="playersSwitch" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="mainText" text="Player : X" wrappingWidth="113.5">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
       <Button fx:id="btnNewGame" layoutX="266.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@application.css" text="New game" visible="false" AnchorPane.bottomAnchor="7.0" />
-      <ImageView fitHeight="301.0" fitWidth="498.0" layoutX="150.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="301.0" fitWidth="498.0" layoutX="150.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../style/testGRID.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="gridPane" layoutX="147.0" layoutY="72.0" prefHeight="296.0" prefWidth="306.0" stylesheets="@application.css">
+      <GridPane fx:id="gridPane" layoutX="147.0" layoutY="84.0" prefHeight="296.0" prefWidth="306.0" stylesheets="@application.css">
          <children>
             <Pane fx:id="pane0" onMouseClicked="#handlePlay" prefHeight="20.0" prefWidth="82.0">
                <children>
-                  <ImageView fx:id="sign0" fitHeight="91.0" fitWidth="93.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign0" fitHeight="91.0" fitWidth="93.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane1" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <ImageView fx:id="sign1" fitHeight="91.0" fitWidth="93.0" layoutX="10.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign1" fitHeight="91.0" fitWidth="93.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
      
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane2" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <ImageView fx:id="sign2" fitHeight="91.0" fitWidth="93.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign2" fitHeight="91.0" fitWidth="93.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane3" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="sign3" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign3" fitHeight="91.0" fitWidth="93.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane4" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="sign4" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign4" fitHeight="91.0" fitWidth="93.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane5" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="sign5" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign5" fitHeight="91.0" fitWidth="93.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane6" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <ImageView fx:id="sign6" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign6" fitHeight="91.0" fitWidth="93.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane7" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <ImageView fx:id="sign7" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign7" fitHeight="91.0" fitWidth="93.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane8" onMouseClicked="#handlePlay" prefHeight="91.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <ImageView fx:id="sign8" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="sign8" fitHeight="91.0" fitWidth="93.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
 
                   </ImageView>
                </children>
