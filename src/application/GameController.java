@@ -180,6 +180,7 @@ public class GameController {
 				strWinner = "Tie";
 			}
 			
+			
 			if (strWinner.equals(X) || strWinner.equals(O)) {
 		    	System.out.println(strWinner + " wins!");
 		        playersSwitch.setText(strWinner + " wins!");
@@ -218,14 +219,7 @@ public class GameController {
 			        scaleTransitionList.add(scaleTransition);
 			    }
 		    }
-
 		}
-
 	}
-	
-	/**
-	 * If a player has won, the method returns the player's symbol.
-	 * If there is no winner, the method returns null.
-	 */
-	
+		
 }

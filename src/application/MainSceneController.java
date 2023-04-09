@@ -69,7 +69,7 @@ public class MainSceneController {
 			
 			Scene MainScene = new Scene(parent);		
 			newStage.setScene(MainScene);
-			newStage.setTitle("Хрестики_нулики");
+			newStage.setTitle("Tic tac toe");
 			newStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -92,7 +92,7 @@ public class MainSceneController {
 			
 			Scene MainScene = new Scene(parent);		
 			newStage.setScene(MainScene);
-			newStage.setTitle("Хрестики_нулики");
+			newStage.setTitle("Tic tac toe");
 			newStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -118,7 +118,7 @@ public class MainSceneController {
 			
 			Scene MainScene = new Scene(parent);		
 			newStage.setScene(MainScene);
-			newStage.setTitle("Хрестики_нулики");
+			newStage.setTitle("Tic tac toe");
 			newStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -140,7 +140,7 @@ public class MainSceneController {
 			
 			Scene MainScene = new Scene(parent);		
 			newStage.setScene(MainScene);
-			newStage.setTitle("Хрестики_нулики");
+			newStage.setTitle("Tic tac toe");
 			newStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -162,7 +162,7 @@ public class MainSceneController {
 		     
 		     Scene MainScene = new Scene(parent);		
 				newStage.setScene(MainScene);
-				newStage.setTitle("Хрестики_нулики");
+				newStage.setTitle("Tic tac toe");
 				newStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
