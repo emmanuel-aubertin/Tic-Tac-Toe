@@ -21,7 +21,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="btnNewGame" layoutX="266.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@application.css" text="New game" AnchorPane.bottomAnchor="7.0" />
+      <Button fx:id="btnNewGame" visible="false" layoutX="266.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@application.css" text="New game" AnchorPane.bottomAnchor="7.0" />
       <ImageView fitHeight="301.0" fitWidth="498.0" layoutX="150.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../style/testGRID.png" />
@@ -31,83 +31,65 @@
          <children>
             <Pane fx:id="pane0" onMouseClicked="#handlePlay" prefHeight="20.0" prefWidth="82.0">
                <children>
-                  <Text fx:id="sign0" fill="#F5F8DE" layoutX="13.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="68.94334411621094">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign0" fitHeight="91.0" fitWidth="93.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane1" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Text fx:id="sign1" fill="#F5F8DE" layoutX="34.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign1" fitHeight="91.0" fitWidth="93.0" layoutX="10.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+     
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane2" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Text fx:id="sign2" fill="#F5F8DE" layoutX="32.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign2" fitHeight="91.0" fitWidth="93.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane3" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign3" fill="#F5F8DE" layoutX="29.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign3" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane4" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign4" fill="#F5F8DE" layoutX="33.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign4" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane5" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Text fx:id="sign5" fill="#F5F8DE" layoutX="33.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign5" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane6" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign6" fill="#F5F8DE" layoutX="28.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign6" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane7" onMouseClicked="#handlePlay" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign7" fill="#F5F8DE" layoutX="32.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign7" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pane8" onMouseClicked="#handlePlay" prefHeight="91.0" prefWidth="90.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="sign8" fill="#F5F8DE" layoutX="30.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Text>
+                  <ImageView fx:id="sign8" fitHeight="91.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
                </children>
             </Pane>
          </children>
