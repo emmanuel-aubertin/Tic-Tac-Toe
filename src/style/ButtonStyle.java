@@ -28,7 +28,7 @@ public class ButtonStyle extends ButtonSkin {
         });
 
         control.setOpacity(1);
-        control.setStyle( "-fx-background-color: #E1332D;"
+        control.setStyle( "-fx-background-color: #6C3B18;"
         				+ "-fx-text-fill: #fff;"
         				+ "-fx-alignment: center;"
         				+ "-fx-text-color: #fff;"

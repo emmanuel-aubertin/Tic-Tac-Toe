@@ -3,12 +3,12 @@
 Button, ComboBox{
     -fx-alignment: center;
     -fx-padding: 5;
-	-fx-background-color: #E1332D;
-	-fx-text-fill:  #6d5bd7;
+	-fx-background-color: #6C3B18;
+	-fx-text-fill:  #fff;
 }
 
 .background {
-	-fx-background-color: #c2b7fd;
+	-fx-background-color: #dbd7d3;
 }	
 
 .gridPane {
@@ -21,6 +21,7 @@ Button, ComboBox{
 
 .progress-bar > .track {
   -fx-text-box-border: #F5F8DE;
+  
   -fx-control-inner-background: #E1332D;
 }
 
@@ -35,18 +36,18 @@ Button, ComboBox{
 
 .combo-box-popup .list-cell {
 	-fx-background-color: #fcfbff;
-	-fx-text-fill: #6d5bd7;
+	-fx-text-fill: #6C3B18;
 }	
 
 .combo-box-popup .list-cell:filled:hover {
-	-fx-background-color: #6d5bd7;
+	-fx-background-color: #6C3B18;
 	-fx-text-fill: #fcfbff;
 }
 
 .combo-box .button .text {
-    -fx-text-fill: #6d5bd7 !important;
+    -fx-text-fill: #6C3B18 !important;
 }
 
 .combo-box .arrow-button .arrow {
-    -fx-background-color: #6d5bd7;
+    -fx-background-color: #6C3B18;
 }
