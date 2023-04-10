@@ -75,7 +75,6 @@ public class MainSceneController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 	
 	/**

@@ -123,26 +123,6 @@ public class GameController {
 	}
 	
 	
-	private void applyTextTransition(Text text) {
-	    LinearGradient startColor = new LinearGradient(0, 0, 1, 2, true, CycleMethod.NO_CYCLE,
-	            new Stop(0, Color.web("#FBEE6F")),
-	            new Stop(1, Color.web("#CF3C05")),
-	            new Stop(0.5, Color.web("#FBEE6F")));
-
-	    LinearGradient endColor = new LinearGradient(0, 0, 1, 2, true, CycleMethod.NO_CYCLE,
-	            new Stop(0, Color.web("#CF3C05")),
-	            new Stop(1, Color.web("#FBEE6F")),
-	            new Stop(0.5, Color.web("#CF3C05")));
-
-	    KeyValue keyValue = new KeyValue(text.fillProperty(), endColor);
-	    KeyFrame keyFrame = new KeyFrame(Duration.millis(2000), keyValue);
-	    Timeline timeline = new Timeline(keyFrame);
-
-	    timeline.setAutoReverse(true);
-	    timeline.setCycleCount(Timeline.INDEFINITE);
-	    timeline.play();
-	}
-	
 	/**
 	 * The method is triggered when a user clicks on a cell in the game grid. 
 	 * It updates the game state, checks for a winner, and adds animations for winning symbols.
@@ -171,6 +151,9 @@ public class GameController {
 
 		double winner = gameLogic.checkIfWin();
 		
+		
+//		checking for winnings
+		
 		if (winner != 0) {
 			if (winner == 1.0)
 				strWinner = O;
@@ -194,7 +177,6 @@ public class GameController {
 			
 		    System.out.println("GameLogique");
 		    System.out.println(gameLogic);
-		    applyTextTransition(playersSwitch);
 		    
 		    int[] posWin = gameLogic.getWinPos();
 		    if(posWin != null) {

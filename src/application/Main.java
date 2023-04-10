@@ -9,6 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
+/**
+ * Loading the main Scene
+ * 
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

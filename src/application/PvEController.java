@@ -115,17 +115,51 @@ public class PvEController {
 	 * 
 	 * @author Svitlana Temkaieva (lanebx)
 	 */
+//	@FXML 
+//	public void handleNewGame(ActionEvent event) {
+//	    // Очистить все поля Text внутри Pane
+//		// Clear all Text fields inside the Pane
+//	    for (Node node : gridPane.getChildren()) {
+//	        if (node instanceof Pane) {
+//	            ((Text) ((Pane) node).getChildren().get(0)).setText("");
+//	            ((Text) ((Pane) node).getChildren().get(0)).setDisable(false);
+//	            node.setDisable(false);
+//	        }
+//	    }
+//	    
+//	    for (FillTransition transition : transitionList) {
+//	        transition.stop();
+//	        Text text = (Text) transition.getShape();
+//	        text.setFill(Color.WHITE);
+//	    }
+//	    transitionList.clear();
+//	    
+//	    for (ScaleTransition transition : scaleTransitionList) {
+//	        transition.stop();
+//	    }
+//	    scaleTransitionList.clear();
+//	    
+//	    playersSwitch.setText("Player : X");
+//	    btnNewGame.setVisible(false);
+//	    game =  new Game();
+//	    canPlay = true;
+//	}
+	
+	
 	@FXML 
 	public void handleNewGame(ActionEvent event) {
-	    // Очистить все поля Text внутри Pane
-		// Clear all Text fields inside the Pane
-	    for (Node node : gridPane.getChildren()) {
-	        if (node instanceof Pane) {
-	            ((Text) ((Pane) node).getChildren().get(0)).setText("");
-	            ((Text) ((Pane) node).getChildren().get(0)).setDisable(false);
-	            node.setDisable(false);
-	        }
-	    }
+		gridPane.setDisable(false);
+		
+		for (Node node : pane0.getParent().getChildrenUnmodifiable()) {
+		    if (node instanceof Pane) {
+		        for (Node childNode : ((Pane) node).getChildren()) {
+		            if (childNode instanceof ImageView) {
+		                ((ImageView) childNode).setImage(null);
+		            }
+		        }
+		        node.setDisable(false);
+		    }
+		}
 	    
 	    for (FillTransition transition : transitionList) {
 	        transition.stop();
@@ -139,6 +173,8 @@ public class PvEController {
 	    }
 	    scaleTransitionList.clear();
 	    
+	    // Сбросить игру
+
 	    playersSwitch.setText("Player : X");
 	    btnNewGame.setVisible(false);
 	    game =  new Game();

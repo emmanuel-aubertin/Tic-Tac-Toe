@@ -1,5 +1,11 @@
 package application;
 
+
+/**
+ * The Game class represents a Tic-Tac-Toe game and contains methods for checking the game state, 
+ * playing moves, and retrieving information about the game board.
+ * 
+ */
 public class Game {
 	private double[] game;
 	
@@ -69,6 +75,12 @@ public class Game {
 		return 0;
 	}
 	
+	
+	/**
+	 * method returns the positions that were part of the winning move 
+	 * (i.e. the three cells in a row/column/diagonal that led to the win). 
+	 * If there is no winner, it returns null.
+	 */
 	public int[] getWinPos() {
 		for(int i = 0; i < 3; i++)
 		{
