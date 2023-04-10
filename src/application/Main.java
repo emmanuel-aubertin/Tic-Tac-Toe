@@ -18,7 +18,7 @@ public class Main extends Application {
 
 			Scene MainScene = new Scene(parent);		
 			primaryStage.setScene(MainScene);
-			primaryStage.setTitle("Хрестики_нулики");
+			primaryStage.setTitle("Tic tac toe");
 			primaryStage.setResizable(false);
 			primaryStage.show();
 

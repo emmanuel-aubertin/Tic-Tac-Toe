@@ -10,7 +10,7 @@
    <children>
       <Button fx:id="buttonLearn" layoutX="214.0" layoutY="206.0" mnemonicParsing="false" onAction="#onButtonLearnClicked" text="Strart trainning" AnchorPane.bottomAnchor="74.0" />
       <ProgressBar fx:id="progressBarLearn" layoutX="44.0" layoutY="159.0" prefHeight="20.0" prefWidth="438.0" progress="0.0" styleClass="progress-bar" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="159.0" />
-      <Label fx:id="textLearn" layoutX="211.0" layoutY="62.0" text="Tic-Tac-Toe" textFill="#f5f8de" AnchorPane.topAnchor="62.0">
+      <Label fx:id="textLearn" layoutX="211.0" layoutY="62.0" text="Tic-Tac-Toe" AnchorPane.topAnchor="62.0">
          <font>
             <Font size="18.0" />
          </font>
