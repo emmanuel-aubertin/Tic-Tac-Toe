@@ -114,38 +114,7 @@ public class PvEController {
 	 * The field with the players' moves is cleared, the result is reset
 	 * 
 	 * @author Svitlana Temkaieva (lanebx)
-	 */
-//	@FXML 
-//	public void handleNewGame(ActionEvent event) {
-//	    // Очистить все поля Text внутри Pane
-//		// Clear all Text fields inside the Pane
-//	    for (Node node : gridPane.getChildren()) {
-//	        if (node instanceof Pane) {
-//	            ((Text) ((Pane) node).getChildren().get(0)).setText("");
-//	            ((Text) ((Pane) node).getChildren().get(0)).setDisable(false);
-//	            node.setDisable(false);
-//	        }
-//	    }
-//	    
-//	    for (FillTransition transition : transitionList) {
-//	        transition.stop();
-//	        Text text = (Text) transition.getShape();
-//	        text.setFill(Color.WHITE);
-//	    }
-//	    transitionList.clear();
-//	    
-//	    for (ScaleTransition transition : scaleTransitionList) {
-//	        transition.stop();
-//	    }
-//	    scaleTransitionList.clear();
-//	    
-//	    playersSwitch.setText("Player : X");
-//	    btnNewGame.setVisible(false);
-//	    game =  new Game();
-//	    canPlay = true;
-//	}
-	
-	
+	 */	
 	@FXML 
 	public void handleNewGame(ActionEvent event) {
 		gridPane.setDisable(false);
