@@ -7,6 +7,10 @@ Button, ComboBox{
 	-fx-text-fill:  #fff;
 }
 
+Label, Text {
+	-fx-text-fill: #6C3B18;
+}
+
 .mainText {
 	-fx-font: 25px Tahoma;
     -fx-fill: linear-gradient(from 0% 0% to 100% 200%, #FBEE6F, #CF3C05 0%, #FBEE6F 50%);
@@ -30,14 +34,14 @@ Button, ComboBox{
 	-fx-border-color: #fff;
 }
 
-.whiteText {
+.text-color {
 	-fx-text-fill:  #fff;
 }
 
 .progress-bar > .track {
   -fx-text-box-border: #F5F8DE;
   
-  -fx-control-inner-background: #E1332D;
+  -fx-control-inner-background: #dbd7d3;
 }
 
 .combo-box {
